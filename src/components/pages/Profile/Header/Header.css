@@ -1,0 +1,13 @@
+.hero-info {
+    display: flex;
+}
+
+.propic-absolute {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.profile-container {
+    position: relative;
+}

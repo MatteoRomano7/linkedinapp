@@ -2,6 +2,8 @@ import "./App.css";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Profile from "./components/pages/Profile/Profile";
 import Home from "./components/pages/home/Home.jsx";
