@@ -10,7 +10,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <p>PEPE</p>
-        <p>PEPE 2</p>
+        <p>PEPE 3</p>
       </header>
     </div>
   );
