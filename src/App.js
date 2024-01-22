@@ -1,22 +1,28 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import Navbar from "./components/Navbar/Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Profile from "./components/pages/Profile/Profile";
+import Home from "./components/pages/home/Home.jsx";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>PEPE</p>
-        <p>PEPE 3</p>
-=======
-        <p>PEPE 2</p>
-        <p>Ciao Belli</p>
+  const pepe = useSelector((state) => state.profile);
 
-      </header>
-    </div>
+  useEffect(() => {
+    console.log(pepe);
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" Component={() => <Home />} />
+        <Route path="/profile/:user" Component={() => <Profile />} />
+        <Route path="/search/:searchQuery" Component={() => <></>} />
+        <Route path="/jobs" Component={() => <></>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
