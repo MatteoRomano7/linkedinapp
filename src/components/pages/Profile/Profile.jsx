@@ -3,6 +3,15 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import People from "./People/People";
 import { Row, Container, Col } from "react-bootstrap";
+import { ListGroup, ListGroupItem } from "react-bootstrap";
+import Analytics from "./Analytics/Analytics";
+import Activity from "./Activity/Activity";
+import Resources from "./Activity/Resources";
+import Training from "./Activity/Training";
+import Interests from "./Activity/Interests";
+import Experience from "./Activity/Experience";
+import Language from "./Language/Langugage";
+import Hiring from "../hiring/Hiring";
 
 function Profile() {
   const [users, setUsers] = useState(null);
@@ -23,10 +32,9 @@ function Profile() {
       });
   }, []);
   
-
   return (
-    <>
-      <p>ciao sono home</p>
+    <>   
+      <p>ciao sono profile</p>
       <Link to="/">vai alla home</Link>
 
       <Container>
@@ -37,8 +45,23 @@ function Profile() {
         </Row>
       </Container>
       
+      <Analytics />
+      <hr />
+      <Resources />
+      <hr />
+      <Activity />
+      <hr />
+      <Experience />
+      <hr />  
+      <Training />
+      <hr />
+      <Interests />
+
+
+    <Language />
+    <Hiring />
     </>
-  );
+  )
 }
 
-export default Profile;
+export default Profile
