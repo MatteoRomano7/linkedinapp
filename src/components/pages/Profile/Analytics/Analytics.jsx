@@ -1,33 +1,38 @@
 import { ArrowRight, EyeFill, PeopleFill, Search } from "react-bootstrap-icons";
+import "./Analytics.css";
+import Container from "react-bootstrap/Container";
 
 const Analytics = () => {
-    return (
-        <div >
-            <div className="container-fluid">
-                <h2>Analytics</h2>
-                <EyeFill /><span>Private to you</span>
-            </div>
-            <div className="d-flex">
-                <div className="">
-                    <div className="d-flex">
-                    <PeopleFill  /><p>41 profile views</p>
-                    </div>
-                    <span>Discover who's viewed your profile.</span>
-                </div>
-                <div className="">
-                    <div className="d-flex">
-                        <Search /><h3> 11 search appearances</h3>
-                    </div>
-                    <span className="m-3">See how often you appear in search results</span>
-                </div>
-            </div>
-            <div className="d-flex justify-content-center">
-                <h2>Show all analytics</h2> <ArrowRight className="aling-items-center m-2" />
-            </div>
+  return (
+    <Container fluid className="border rounded section">
+      <div>
+        <h2>Analytics</h2>
+        <p className="onlyYou">
+          <EyeFill />
+          <span>Private to you</span>
+        </p>
+      </div>
+      <div className="border-bottom d-flex gap-4">
+        <div className="profile-highlight">
+          <PeopleFill size={24} />
+          <div>
+            <p>{Math.round(Math.random() * 1000)} profile views</p>
+            <p>Discover who's viewed your profile.</p>
+          </div>
         </div>
-
-    )
-}
+        <div className="profile-highlight">
+          <Search size={24}/>
+          <div>
+            <h4>11 search appearances</h4>
+            <p>See how often you appear in search results</p>
+          </div>
+        </div>
+      </div>
+      <div className="show-analytics">
+        <h4 className="py-1">Show all analytics</h4>
+        <ArrowRight className="aling-items-center m-2" />
+      </div>
+    </Container>
+  );
+};
 export default Analytics;
-
-
