@@ -12,6 +12,7 @@ import Interests from "./Activity/Interests";
 import Experience from "./Activity/Experience";
 import Language from "./Language/Langugage";
 import Hiring from "../hiring/Hiring";
+import Experiences from "./Experiences/Experiences";
 import Header from "./Header/Header";
 
 function Profile() {
@@ -19,7 +20,7 @@ function Profile() {
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
-    fetch("https://striveschool-api.herokuapp.com/api/profile/", {
+    fetch('https://striveschool-api.herokuapp.com/api/profile/', {
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
@@ -41,17 +42,21 @@ function Profile() {
         <Analytics />
         <Resources />
         <Activity />
-        {/* <Experience /> */}
         <Training />
         <Interests />
+        <Hiring />
+        <Experiences />
+
       </div>
       <div className="profile-sidebar">
         <Language />
         <People users={users} />
       </div>
-      {/* <Hiring /> */}
     </Container>
   );
+
+    </>
+  )
 }
 
 export default Profile;
