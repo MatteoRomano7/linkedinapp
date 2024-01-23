@@ -9,7 +9,7 @@ function Home() {
       
       <Hiring />
     </>
-  );
+  )
 }
 
-export default Home;
+export default Home

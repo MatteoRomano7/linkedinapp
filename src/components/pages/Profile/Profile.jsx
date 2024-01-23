@@ -14,8 +14,8 @@ function Profile() {
       },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
+      .then((data) => console.log(data))
+  }, [])
   return (
     <>   
       <p>ciao sono profile</p>
@@ -23,7 +23,7 @@ function Profile() {
     <Language />
     <Hiring />
     </>
-  );
+  )
 }
 
-export default Profile;
+export default Profile

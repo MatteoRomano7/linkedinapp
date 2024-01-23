@@ -1,17 +1,18 @@
-import "./App.css";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import Navbar from "./components/Navbar/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Profile from "./components/pages/Profile/Profile";
-import Home from "./components/pages/home/Home.jsx";
+import "./App.css"
+import { useSelector } from "react-redux"
+import { useEffect } from "react"
+import Navbar from "./components/Navbar/Navbar"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Profile from "./components/pages/Profile/Profile"
+import Home from "./components/pages/home/Home.jsx"
+import MyFooter from "./components/MyFooter/MyFooter.jsx"
 
 function App() {
-  const pepe = useSelector((state) => state.profile);
+  const pepe = useSelector((state) => state.profile)
 
   useEffect(() => {
-    console.log(pepe);
-  }, []);
+    console.log(pepe)
+  }, [])
 
   return (
     <BrowserRouter>
@@ -22,8 +23,9 @@ function App() {
         <Route path="/search/:searchQuery" Component={() => <></>} />
         <Route path="/jobs" Component={() => <></>} />
       </Routes>
+      <MyFooter />
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
