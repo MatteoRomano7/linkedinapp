@@ -2,6 +2,13 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
+import Analytics from "./Analytics/Analytics";
+import Activity from "./Activity/Activity";
+import Resources from "./Activity/Resources";
+import Training from "./Activity/Training";
+import Interests from "./Activity/Interests";
+import Experience from "./Activity/Experience";
+
 import Language from "./Language/Langugage";
 import Hiring from "../hiring/Hiring";
 
@@ -20,6 +27,20 @@ function Profile() {
     <>   
       <p>ciao sono profile</p>
       <Link to="/">vai alla home</Link>
+
+      <Analytics />
+      <hr />
+      <Resources />
+      <hr />
+      <Activity />
+      <hr />
+      <Experience />
+      <hr />  
+      <Training />
+      <hr />
+      <Interests />
+
+
     <Language />
     <Hiring />
     </>
