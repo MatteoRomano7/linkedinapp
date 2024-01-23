@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 import Language from "./Language/Langugage";
 import Hiring from "../hiring/Hiring";
+import Experiences from "./Experiences/Experiences";
 
 function Profile() {
   useEffect(() => {
@@ -22,6 +23,7 @@ function Profile() {
       <Link to="/">vai alla home</Link>
     <Language />
     <Hiring />
+    <Experiences />
     </>
   );
 }
