@@ -7,6 +7,7 @@ import Activity from "./Activity/Activity";
 import Resources from "./Activity/Resources";
 import Training from "./Activity/Training";
 import Interests from "./Activity/Interests";
+import Experience from "./Activity/Experience";
 
 function Profile() {
   useEffect(() => {
@@ -23,6 +24,18 @@ function Profile() {
     <>
       <p>ciao sono home</p>
       <Link to="/">vai alla home</Link>
+
+      <Analytics />
+      <hr />
+      <Resources />
+      <hr />
+      <Activity />
+      <hr />
+      <Experience />
+      <hr />  
+      <Training />
+      <hr />
+      <Interests />
 
     </>
   );
