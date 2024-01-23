@@ -14,6 +14,7 @@ import Language from "./Language/Langugage";
 import Hiring from "../hiring/Hiring";
 
 function Profile() {
+  console.log('profile render')
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
@@ -33,8 +34,9 @@ function Profile() {
   }, []);
   
   return (
-    <>   
-      <p>ciao sono profile</p>
+    <>
+      <p>ciao sono profilo</p>
+      <Header />
       <Link to="/">vai alla home</Link>
 
       <Container>
