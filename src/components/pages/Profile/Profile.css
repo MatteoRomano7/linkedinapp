@@ -1,0 +1,32 @@
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.33rem
+}
+
+.profile-highlight {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.onlyYou {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgb(100, 100, 100);
+    font-size: 0.9rem
+}
+
+.outlined-button {
+    border: 1px solid #0B5ED7;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 4px 12px;
+    color: #0B5ED7
+
+}

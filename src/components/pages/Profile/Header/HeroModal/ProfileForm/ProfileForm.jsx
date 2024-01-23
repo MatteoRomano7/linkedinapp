@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-function ProfileForm({ data }) {
+function ProfileForm({ data, onClose }) {
   const [tempData, setTempData] = useState({});
   const dispatch = useDispatch();
   const asdf = useSelector((state) => state.profile);
@@ -36,8 +36,8 @@ function ProfileForm({ data }) {
         onSubmit={(e) => {
           e.preventDefault();
           updateProfile();
-          dispatch({ type: "SET_PROFILE", payload: { ...data, ...tempData } });
-          console.log(asdf)
+          dispatch({ type: "SET_PROFILE", payload: { ...data, ...tempData } })
+          onClose();
 
 
         }}

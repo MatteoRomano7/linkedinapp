@@ -1,7 +1,4 @@
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
-import { useState } from "react";
 import { CloseButton } from "react-bootstrap";
 import ProfileForm from "./ProfileForm/ProfileForm";
 import ImageUpload from "./ImageUpload/ImageUpload";
@@ -20,8 +17,8 @@ function HeroModal({ show, onHide, user, type }) {
         <CloseButton onClick={onHide} />
       </Modal.Header>
       <Modal.Body>
-        {type === "profile" && <ProfileForm data={user} />}
-        {type === "upload" && <ImageUpload />}
+        {type === "profile" && <ProfileForm data={user} onClose={onHide}/>}
+        {type === "upload" && <ImageUpload onClose={onHide}/>}
       </Modal.Body>
     </Modal>
   );

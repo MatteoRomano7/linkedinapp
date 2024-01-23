@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProfile } from "../../../../redux/actions";
 
 function Header() {
-  // const [profileData, setProfileData] = useState(null);
   const [modalShow, setModalShow] = useState(false);
   const [upload, setUpload] = useState(false);
   const dispatch = useDispatch();
@@ -18,18 +17,20 @@ function Header() {
   const profileData = useSelector((state) => state.profile);
 
   useEffect(() => {
-
     dispatch(fetchProfile());
     console.log("fetch");
-
   }, []);
-
+  
   return (
     <>
       {
         <Card>
           <div className="profile-container">
-            <Card.Img className="banner" variant="top" src={profileData.image} />
+            <Card.Img
+              className="banner"
+              variant="top"
+              src={profileData.image}
+            />
 
             <div className="propic-absolute">
               <img className="propic" src={profileData.image} />
@@ -60,20 +61,13 @@ function Header() {
                 <address>{profileData.area}</address>
 
                 <a href="#">Contact info</a>
-                <div>
-                  <Button>Open to</Button>
-                  <Button>Add profile section</Button>
-                  <Button>More</Button>
+                <div className="d-flex gap-1">
+                  <Button className="fullcolor-button">Open to</Button>
+                  <Button className="outlined-button">Add profile section</Button>
+                  <button className="white-button">More</button>
                 </div>
               </div>
               <div>
-                <Button
-                  onClick={() => {
-                    setModalShow(true);
-                  }}
-                >
-                  Apri il modale
-                </Button>
                 <HeroModal
                   user={profileData}
                   show={modalShow}
@@ -82,8 +76,15 @@ function Header() {
                     setModalShow(false);
                   }}
                 />
-                <p>Consulente</p>
+                {/* <p>Consulente</p> */}
               </div>
+              <Icon.Pencil size={24}
+              style={{cursor: "pointer"}}
+                  onClick={() => {
+                    setModalShow(true);
+                  }}
+                />
+
             </div>
           </Card.Body>
         </Card>
