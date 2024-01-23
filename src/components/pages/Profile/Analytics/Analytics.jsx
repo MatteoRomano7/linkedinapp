@@ -31,13 +31,3 @@ const Analytics = () => {
 export default Analytics;
 
 
-// da inserire su Profilo per visualizzare i component
-{/* <Analytics />
-<hr />
-<Resources />
-<hr />
-<Activity />
-<hr />
-<Training />
-<hr />
-<Interests /> */}
