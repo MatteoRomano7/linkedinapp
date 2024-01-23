@@ -12,6 +12,8 @@ import Interests from "./Activity/Interests";
 import Experience from "./Activity/Experience";
 import Language from "./Language/Langugage";
 import Hiring from "../hiring/Hiring";
+import Experiences from "./Experiences/Experiences";
+import Header from "./Header/Header";
 import Header from "./Header/Header";
 
 function Profile() {
@@ -63,6 +65,7 @@ function Profile() {
 
     <Language />
     <Hiring />
+    <Experiences />
     </>
   )
 }
