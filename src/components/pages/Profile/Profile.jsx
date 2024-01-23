@@ -9,6 +9,9 @@ import Training from "./Activity/Training";
 import Interests from "./Activity/Interests";
 import Experience from "./Activity/Experience";
 
+import Language from "./Language/Langugage";
+import Hiring from "../hiring/Hiring";
+
 function Profile() {
   useEffect(() => {
     fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
@@ -18,11 +21,11 @@ function Profile() {
       },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
+      .then((data) => console.log(data))
+  }, [])
   return (
-    <>
-      <p>ciao sono home</p>
+    <>   
+      <p>ciao sono profile</p>
       <Link to="/">vai alla home</Link>
 
       <Analytics />
@@ -37,8 +40,11 @@ function Profile() {
       <hr />
       <Interests />
 
+
+    <Language />
+    <Hiring />
     </>
-  );
+  )
 }
 
-export default Profile;
+export default Profile
