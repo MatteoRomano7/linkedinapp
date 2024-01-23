@@ -60,8 +60,6 @@ function Profile() {
       <Training />
       <hr />
       <Interests />
-
-
     <Language />
     <Hiring />
     <Experiences />
