@@ -31,6 +31,7 @@ const SinglePeople = ({ users }) => {
                 <BsFillPersonPlusFill className="me-2" />
                 Collegati
               </button>
+              <hr />
             </div>
           </div>
         </div>
