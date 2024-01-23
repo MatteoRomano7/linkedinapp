@@ -1,12 +1,14 @@
 .content-wrapper {
     display: flex;
     justify-content: space-between;
+    margin-top: 1rem;
+
 }
 
 .profile-main {
     display: flex;
     flex-direction: column;
-    gap: 0.33rem
+    gap: 1rem
 }
 
 .profile-highlight {
@@ -26,7 +28,11 @@
     border: 1px solid #0B5ED7;
     background-color: white;
     border-radius: 1rem;
-    padding: 4px 12px;
+    padding: 2px 12px;
     color: #0B5ED7
 
+}
+
+.section {
+    background-color: white;
 }

@@ -18,5 +18,24 @@
     font-weight: bold;
     letter-spacing: 0.08rem;
     font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    padding: 2px 12px;
 }
 
+
+.person-details {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 70%;
+}
+
+.person-details button {
+    max-width: 120px;
+}
+
+.person-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

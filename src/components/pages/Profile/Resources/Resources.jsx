@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 
 const Resources = () => {
   return (
-    <Container fluid className="border rounded">
+    <Container fluid className="border rounded section">
       <div>
         <h2>Risorse</h2>
 

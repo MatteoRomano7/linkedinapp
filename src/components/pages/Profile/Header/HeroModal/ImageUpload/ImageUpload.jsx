@@ -34,8 +34,10 @@ function ImageUpload({ onClose}) {
       <Form
         onSubmit={(e) => {
           handleImageUpload(e);
+          onClose()
         }}
         encType="multipart/form-data"
+        
       >
         <Form.Control
           className="image-upload"
@@ -46,7 +48,7 @@ function ImageUpload({ onClose}) {
           }}
         ></Form.Control>
         <hr />
-        <Button type="submit" onClick={onClose}>submit image</Button>
+        <Button type="submit" >submit image</Button>
       </Form>
     </>
   );

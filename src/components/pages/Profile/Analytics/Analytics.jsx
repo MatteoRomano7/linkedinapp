@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 
 const Analytics = () => {
   return (
-    <Container fluid className="border rounded">
+    <Container fluid className="border rounded section">
       <div>
         <h2>Analytics</h2>
         <p className="onlyYou">

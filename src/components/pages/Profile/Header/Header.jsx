@@ -3,24 +3,25 @@ import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import "./Header.css";
 import HeroModal from "./HeroModal/HeroModal";
-import Form from "react-bootstrap/Form";
 import * as Icon from "react-bootstrap-icons";
-import ImageUpload from "./HeroModal/ImageUpload/ImageUpload";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProfile } from "../../../../redux/actions";
 
 function Header() {
   const [modalShow, setModalShow] = useState(false);
   const [upload, setUpload] = useState(false);
+  const [showIcon, setShowIcon] = useState(false)
   const dispatch = useDispatch();
-  console.log("header render");
   const profileData = useSelector((state) => state.profile);
+
+  console.log("header render");
+
 
   useEffect(() => {
     dispatch(fetchProfile());
     console.log("fetch");
   }, []);
-  
+
   return (
     <>
       {
@@ -33,13 +34,12 @@ function Header() {
             />
 
             <div className="propic-absolute">
-              <img className="propic" src={profileData.image} />
+              <img className="propic" src={profileData.image} onClick={() => setUpload(true)} onMouseOver={() => {setShowIcon(true)}} onMouseLeave={() => setShowIcon(false)}/>
 
-              <Icon.Upload
+              {showIcon && (<Icon.Upload
                 size={18}
                 className="upload-icon"
-                onClick={() => setUpload(true)}
-              />
+              />)}
             </div>
           </div>
           {upload && (
@@ -56,14 +56,18 @@ function Header() {
           <Card.Body>
             <div className="hero-info">
               <div>
-                <h1>{`${profileData.name} ${profileData.surname}`}</h1>
+                <h2>{`${profileData.name} ${profileData.surname}`}</h2>
                 <p>{profileData.title}</p>
-                <address>{profileData.area}</address>
+                <div className="d-flex gap-4">
+                  <address>{profileData.area}</address>
 
-                <a href="#">Contact info</a>
-                <div className="d-flex gap-1">
+                  <a href="#" style={{textDecoration: "none"}}>Contact info</a>
+                </div>{" "}
+                <div className="d-flex gap-2">
                   <Button className="fullcolor-button">Open to</Button>
-                  <Button className="outlined-button">Add profile section</Button>
+                  <Button className="outlined-button">
+                    Add profile section
+                  </Button>
                   <button className="white-button">More</button>
                 </div>
               </div>
@@ -76,15 +80,14 @@ function Header() {
                     setModalShow(false);
                   }}
                 />
-                {/* <p>Consulente</p> */}
               </div>
-              <Icon.Pencil size={24}
-              style={{cursor: "pointer"}}
-                  onClick={() => {
-                    setModalShow(true);
-                  }}
-                />
-
+              <Icon.Pencil
+                size={24}
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  setModalShow(true);
+                }}
+              />
             </div>
           </Card.Body>
         </Card>

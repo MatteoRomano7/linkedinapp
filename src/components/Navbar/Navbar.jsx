@@ -1,4 +1,7 @@
-import React from "react"
+import { Link } from "react-router-dom";
+import React from "react";
+import Container from "react-bootstrap/Container";
+import "./Navbar.css";
 import {
   Navbar,
   Nav,
@@ -7,7 +10,7 @@ import {
   Dropdown,
   Col,
   Row,
-} from "react-bootstrap"
+} from "react-bootstrap";
 import {
   Linkedin,
   HouseDoorFill,
@@ -15,78 +18,108 @@ import {
   SuitClubFill,
   ChatRightDotsFill,
   BellFill,
-} from "react-bootstrap-icons"
+  CaretDownFill,
+  Grid3x3GapFill,
+} from "react-bootstrap-icons";
 
 function MyNavbar() {
   return (
-    <Navbar bg="white" expand="lg" className="mx-5">
-      <Navbar.Brand href="#home">
-        <Linkedin className="logoLinkedin" />
-      </Navbar.Brand>
-      <Form inline className="tuam">
-        <FormControl type="text" placeholder="Cerca" className="mr-sm-2" />
-      </Form>
+    <Navbar bg="white" expand="lg" className="sticky-top">
+      <Container className="navbar-container">
+        <div className="navbar-left">
+          <Navbar.Brand href="#home">
+            <Linkedin size={28} className="logoLinkedin" />
+          </Navbar.Brand>
+          <Form inline className="tuam">
+            <FormControl
+              type="text"
+              placeholder="Cerca"
+              className="mr-sm-2"
+              style={{ width: "300px" }}
+            />
+          </Form>
+        </div>
+        <div>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Row className="ml-auto align-items-center">
+              <Col>
+                <Link to="/" className="nav-link navlink-item">
+                  <HouseDoorFill />
+                  <p>Home</p>
+                </Link>
+              </Col>
+              <Col>
+                <Link to="/" className="linkNavbar nav-link navlink-item">
+                  <PeopleFill />
+                  <p>Rete</p>
+                </Link>
+              </Col>
+              <Col>
+                <Nav.Link href="#home" className="linkNavbar navlink-item">
+                  <SuitClubFill />
+                  <p>Lavoro</p>
+                </Nav.Link>
+              </Col>
+              <Col>
+                <Nav.Link href="#home" className="linkNavbar  navlink-item">
+                  <ChatRightDotsFill />
+                  <p>Messaggistica</p>
+                </Nav.Link>
+              </Col>
+              <Col>
+                <Nav.Link href="#home" className="linkNavbar navlink-item">
+                  <BellFill />
+                  <p>Notifiche</p>
+                </Nav.Link>
+              </Col>
 
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Row className="ml-auto align-items-center">
-          <Col>
-            <Nav.Link href="#home" className="linkNavbar text-center">
-              <HouseDoorFill />
-              <p>Home</p>
-            </Nav.Link>
-          </Col>
-          <Col>
-            <Nav.Link href="#home" className="linkNavbar text-center">
-              <PeopleFill />
-              <p>Rete</p>
-            </Nav.Link>
-          </Col>
-          <Col>
-            <Nav.Link href="#home" className="linkNavbar text-center">
-              <SuitClubFill />
-              <p>Lavoro</p>
-            </Nav.Link>
-          </Col>
-          <Col>
-            <Nav.Link href="#home" className="linkNavbar text-center">
-              <ChatRightDotsFill />
-              <p>Messaggistica</p>
-            </Nav.Link>
-          </Col>
-          <Col>
-            <Nav.Link href="#home" className="linkNavbar text-center">
-              <BellFill />
-              <p>Notifiche</p>
-            </Nav.Link>
-          </Col>
-          <Col>
-            <div className="d-flex flex-column text-center">
-              <div>
-                <HouseDoorFill />
-              </div>
-              <div>
-                <Dropdown className="mx-3 toAddBorder">
-                  <Dropdown.Toggle variant="transparent" id="dropdown-basic">
-                    Tu
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
-                      Another action
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
-                      Something else
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </Navbar.Collapse>
+              <Col>
+                <div className="navlink-item">
+                  <HouseDoorFill />
+
+                  <div>
+                    <Dropdown className="mx-3 toAddBorder">
+                      <Dropdown.Toggle
+                        variant="transparent"
+                        id="dropdown-basic"
+                        style={{ padding: "0 0 1rem 0" }}
+                      >
+                        Tu
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu>
+                        <Link to="/profile/me" className="dropdown-item">
+                          Action
+                        </Link>
+
+                        <Dropdown.Item href="#/action-2">
+                          Another action
+                        </Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">
+                          Something else
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </div>
+                </div>
+              </Col>
+              <Col>
+                <Nav.Link href="#home" className="linkNavbar navlink-item">
+                  <Grid3x3GapFill />
+                  <p>Per le aziende</p>
+                </Nav.Link>
+              </Col>
+              <Col>
+                <Nav.Link href="#home" className="linkNavbar navlink-item">
+                  <p>Prova premium per 0 euro</p>
+                </Nav.Link>
+              </Col>
+            </Row>
+          </Navbar.Collapse>
+        </div>
+      </Container>
     </Navbar>
-  )
+  );
 }
 
-export default MyNavbar
+export default MyNavbar;

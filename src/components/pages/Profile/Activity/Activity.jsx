@@ -4,7 +4,7 @@ import "./Activity.css";
 
 const Activity = () => {
   return (
-    <Container fluid className="border rounded">
+    <Container fluid className="border rounded section">
       <div className="border-bottom">
         <div className="d-flex justify-content-between align-items-center">
           <div>

@@ -13,6 +13,9 @@
     width: 80px;
     height: 80px;
     object-fit: cover;
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.692);
 }
 
 .propic-absolute {
@@ -43,12 +46,19 @@
     border-radius: 1rem;
     background-color: white;
     color: gray;
-    padding: 0 12px;
+    padding: 2px 12px;
 }
 
 
 .fullcolor-button {
     background-color: #0B5ED7;
     border-radius: 1rem;
+    padding: 2px 12px;
     color: white;
+}
+
+
+address {
+    color: rgb(151, 151, 151);
+    font-weight: 300
 }

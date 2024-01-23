@@ -25,8 +25,6 @@ function ProfileForm({ data, onClose }) {
       },
       body: JSON.stringify({ ...data, ...tempData }),
     });
-    
-
   }
 
   return (
@@ -36,10 +34,8 @@ function ProfileForm({ data, onClose }) {
         onSubmit={(e) => {
           e.preventDefault();
           updateProfile();
-          dispatch({ type: "SET_PROFILE", payload: { ...data, ...tempData } })
+          dispatch({ type: "SET_PROFILE", payload: { ...data, ...tempData } });
           onClose();
-
-
         }}
       >
         <Form.Group>
