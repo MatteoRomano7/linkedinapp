@@ -12,6 +12,7 @@ import Interests from "./Activity/Interests";
 import Experience from "./Activity/Experience";
 import Language from "./Language/Langugage";
 import Hiring from "../hiring/Hiring";
+import Header from "./Header/Header"
 
 function Profile() {
   console.log('profile render')
