@@ -1,0 +1,21 @@
+.fotoTonde {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    top: 10px;
+}
+
+.link-sidebar {
+    text-decoration: none;
+}
+
+.bottoneSideBar {
+    background-color: transparent;
+    border-radius: 25px;
+    border: 1px solid black;
+    color: var(--gray-text);
+    font-weight: bold;
+    letter-spacing: 0.08rem;
+    font-size: 0.9rem;
+}
+
