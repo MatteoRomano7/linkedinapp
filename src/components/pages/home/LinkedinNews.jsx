@@ -1,7 +1,7 @@
 import { InfoSquareFill } from "react-bootstrap-icons";
 import { ArrowDown } from "react-bootstrap-icons";
 import { Link } from "react-bootstrap-icons";
-import img from "../../../../public/assets/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+import Hiring from "../hiring/Hiring";
 
 const LinkedinNews = () => {
     return (
@@ -27,8 +27,9 @@ const LinkedinNews = () => {
             <div className="d-flex justify-content-center">
                 <h2>Show more</h2> <ArrowDown className="aling-items-center m-2" />
             </div>
-            
+            <Hiring>
             <Link to='/Job' />
+            </Hiring>
 
         </div>
     )
