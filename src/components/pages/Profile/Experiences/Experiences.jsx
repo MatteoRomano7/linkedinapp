@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Pencil, PlusLg, CalendarDate } from 'react-bootstrap-icons';
 import styles from './Experiences.module.css';
 import AddExperienceModal from './AddExperiencesModal';
+import  Dropdown  from 'react-bootstrap/Dropdown';
 
 const Experiences = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -31,16 +32,16 @@ const Experiences = () => {
         <PlusLg className={styles.plusIcon} onClick={handleDropdownToggle} />
       </div>
       {showDropdown && (
-        <div className={styles.dropdownContainer}>
-          <div className={styles.dropdown1} onClick={handleAddPosition}>
+        <Dropdown.Menu className={styles.dropdownContainer}>
+          <Dropdown.Item className={styles.dropdown1} onClick={handleAddPosition}>
             <PlusLg className={styles.dropdownIcon} />
             Aggiungi posizione lavorativa
-          </div>
-          <div className={styles.dropdown} onClick={handleAddBreak}>
+          </Dropdown.Item>
+          <Dropdown.Item className={styles.dropdown} onClick={handleAddBreak}>
             <CalendarDate className={styles.dropdownIcon} />
             Aggiungi pausa lavorativa
-          </div>
-        </div>
+          </Dropdown.Item>
+        </Dropdown.Menu>
       )}
       <div className={styles.content}>
         <img src="url_dell_immagine" alt="Esperienza" />

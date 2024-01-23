@@ -38,7 +38,7 @@
     height: 100px;
   }
   
-  .dropdown {
+  /* .dropdown {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -50,7 +50,7 @@
     right: 0;
     width: 250px;
     height: 100px;
-  }
+  } */
   
   .dropdownIcon {
     margin-right: 5px;
