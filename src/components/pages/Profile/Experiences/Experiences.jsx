@@ -1,64 +1,67 @@
-import React, { useState } from 'react';
-import { Pencil, PlusLg, CalendarDate } from 'react-bootstrap-icons';
-import styles from './Experiences.module.css';
-import AddExperienceModal from './AddExperiencesModal';
+import React, { useState } from "react"
+import { Pencil, PlusLg, CalendarDate } from "react-bootstrap-icons"
+import styles from "./Experiences.module.css"
+import AddExperienceModal from "./AddExperiencesModal"
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+} from "react-bootstrap"
 
 const Experiences = () => {
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-
-  const handleDropdownToggle = () => {
-    setShowDropdown(!showDropdown);
-  };
+  const [showModal, setShowModal] = useState(false)
 
   const handleAddPosition = () => {
-    setShowModal(true);
-    console.log('Aggiungi posizione lavorativa');
-  };
+    setShowModal(true)
+    console.log("Aggiungi posizione lavorativa")
+  }
 
   const handleAddBreak = () => {
-    console.log('Aggiungi pausa lavorativa');
-  };
+    console.log("Aggiungi pausa lavorativa")
+  }
 
   const closeModal = () => {
-    setShowModal(false);
-  };
+    setShowModal(false)
+  }
 
   return (
-    <div className={styles.experiencesContainer}>
+    <>
       <div className={styles.header}>
         <p className={styles.experienceText}>Esperienza</p>
-        <PlusLg className={styles.plusIcon} onClick={handleDropdownToggle} />
       </div>
-      {showDropdown && (
-        <div className={styles.dropdownContainer}>
-          <div className={styles.dropdown1} onClick={handleAddPosition}>
+      <Dropdown>
+        <DropdownToggle className="bg-transparent border-0 ">
+          <PlusLg className={styles.plusIcon} />
+        </DropdownToggle>
+
+        <DropdownMenu>
+          <DropdownItem onClick={handleAddPosition}>
             <PlusLg className={styles.dropdownIcon} />
             Aggiungi posizione lavorativa
-          </div>
-          <div className={styles.dropdown} onClick={handleAddBreak}>
+          </DropdownItem>
+          <DropdownItem onClick={handleAddBreak}>
             <CalendarDate className={styles.dropdownIcon} />
             Aggiungi pausa lavorativa
+          </DropdownItem>
+        </DropdownMenu>
+
+        <div className={styles.content}>
+          <img src="url_dell_immagine" alt="Esperienza" />
+          <div className={styles.text}>
+            <p>NOME LAVORO</p>
+            <p>Altre informazioni sul lavoro</p>
           </div>
+          <Pencil className={styles.pencilIcon} />
         </div>
-      )}
-      <div className={styles.content}>
-        <img src="url_dell_immagine" alt="Esperienza" />
-        <div className={styles.text}>
-          <p>NOME LAVORO</p>
-          <p>Altre informazioni sul lavoro</p>
-        </div>
-        <Pencil className={styles.pencilIcon} />
-      </div>
 
-      {showModal && (
-        <AddExperienceModal
-          isOpen={showModal}
-          onRequestClose={closeModal}
-        />
-      )}
-    </div>
-  );
-};
+        {showModal && (
+          <AddExperienceModal isOpen={showModal} onRequestClose={closeModal} />
+        )}
+      </Dropdown>
+    </>
+  )
+}
 
-export default Experiences;
+export default Experiences
+
