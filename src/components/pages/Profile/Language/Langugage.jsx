@@ -4,7 +4,7 @@ import styles from "./Langugage.module.css";
 
 const Language = () => {
   return (
-    <div className={styles.containerLanguage}>
+    <div className={`${styles.containerLanguage} section`}>
       <div className={styles.sectionLanguage}>
         <div>
           <p className={styles.sectionTitle}>Lingua del profilo</p>

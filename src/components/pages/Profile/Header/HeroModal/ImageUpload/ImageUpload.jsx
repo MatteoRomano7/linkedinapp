@@ -2,7 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 
-function ImageUpload() {
+function ImageUpload({ onClose}) {
   const [image, setImage] = useState(null);
 
   const handleImageUpload = (event) => {
@@ -34,8 +34,10 @@ function ImageUpload() {
       <Form
         onSubmit={(e) => {
           handleImageUpload(e);
+          onClose()
         }}
         encType="multipart/form-data"
+        
       >
         <Form.Control
           className="image-upload"
@@ -46,7 +48,7 @@ function ImageUpload() {
           }}
         ></Form.Control>
         <hr />
-        <Button type="submit">submit image</Button>
+        <Button type="submit" >submit image</Button>
       </Form>
     </>
   );
