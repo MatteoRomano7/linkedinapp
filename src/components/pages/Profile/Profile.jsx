@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./Profile.css";
 import People from "./People/People";
-import { Row, Container, Col } from "react-bootstrap";
-import { ListGroup, ListGroupItem } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Analytics from "./Analytics/Analytics";
 import Activity from "./Activity/Activity";
-import Resources from "./Activity/Resources";
+import Resources from "./Resources/Resources";
 import Training from "./Activity/Training";
 import Interests from "./Activity/Interests";
 import Experience from "./Activity/Experience";
@@ -16,11 +16,11 @@ import Experiences from "./Experiences/Experiences";
 import Header from "./Header/Header";
 
 function Profile() {
-  console.log('profile render')
+  console.log("profile render");
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
-    fetch("https://striveschool-api.herokuapp.com/api/profile/", {
+    fetch('https://striveschool-api.herokuapp.com/api/profile/', {
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
@@ -34,39 +34,29 @@ function Profile() {
         console.error("Error in Data Retrieval:", error);
       });
   }, []);
-  
+
   return (
-    <>
-      <p>ciao sono profilo</p>
-      <Header />
-      <Link to="/">vai alla home</Link>
+    <Container className="content-wrapper">
+      <div className="profile-main">
+        <Header />
+        <Analytics />
+        <Resources />
+        <Activity />
+        <Training />
+        <Interests />
+        <Hiring />
+        <Experiences />
 
-      <Container>
-        <Row className="d-none d-lg-block col-md-4 ms-4">
-          <Col>
-          <People users={users} />
-          </Col>
-        </Row>
-      </Container>
-      
-      <Analytics />
-      <hr />
-      <Resources />
-      <hr />
-      <Activity />
-      <hr />
-      <Experience />
-      <hr />  
-      <Training />
-      <hr />
-      <Interests />
+      </div>
+      <div className="profile-sidebar">
+        <Language />
+        <People users={users} />
+      </div>
+    </Container>
+  );
 
-
-    <Language />
-    <Hiring />
-    <Experiences />
     </>
   )
 }
 
-export default Profile
+export default Profile;
