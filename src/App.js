@@ -9,7 +9,6 @@ import Profile from "./components/pages/Profile/Profile";
 import Home from "./components/pages/home/Home.jsx";
 
 function App() {
-  const pepe = useSelector((state) => state.profile);
 
 
   return (

@@ -6,33 +6,34 @@ import HeroModal from "./HeroModal/HeroModal";
 import Form from "react-bootstrap/Form";
 import * as Icon from "react-bootstrap-icons";
 import ImageUpload from "./HeroModal/ImageUpload/ImageUpload";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProfile } from "../../../../redux/actions";
 
 function Header() {
-  const [profileData, setProfileData] = useState(null);
+  // const [profileData, setProfileData] = useState(null);
   const [modalShow, setModalShow] = useState(false);
   const [upload, setUpload] = useState(false);
+  const dispatch = useDispatch();
+  console.log("header render");
+  const profileData = useSelector((state) => state.profile);
 
   useEffect(() => {
-    fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setProfileData(data);
-      })
+
+    dispatch(fetchProfile());
+    console.log("fetch");
+
   }, []);
 
   return (
     <>
-      {profileData && (
-        <Card style={{ width: "36rem" }}>
+      {
+        <Card>
           <div className="profile-container">
-            <Card.Img variant="top" src={profileData.image} />
+            <Card.Img className="banner" variant="top" src={profileData.image} />
+
             <div className="propic-absolute">
-              <img style={{ width: "100px" }} src={profileData.image} />
+              <img className="propic" src={profileData.image} />
+
               <Icon.Upload
                 size={18}
                 className="upload-icon"
@@ -56,8 +57,8 @@ function Header() {
               <div>
                 <h1>{`${profileData.name} ${profileData.surname}`}</h1>
                 <p>{profileData.title}</p>
-
                 <address>{profileData.area}</address>
+
                 <a href="#">Contact info</a>
                 <div>
                   <Button>Open to</Button>
@@ -86,7 +87,7 @@ function Header() {
             </div>
           </Card.Body>
         </Card>
-      )}
+      }
     </>
   );
 }
