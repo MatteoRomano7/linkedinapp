@@ -11,9 +11,6 @@ import Home from "./components/pages/home/Home.jsx";
 function App() {
   const pepe = useSelector((state) => state.profile);
 
-  useEffect(() => {
-    console.log(pepe);
-  }, []);
 
   return (
     <BrowserRouter>

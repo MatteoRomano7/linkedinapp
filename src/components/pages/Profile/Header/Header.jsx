@@ -3,10 +3,14 @@ import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import "./Header.css";
 import HeroModal from "./HeroModal/HeroModal";
+import Form from "react-bootstrap/Form";
+import * as Icon from "react-bootstrap-icons";
+import ImageUpload from "./HeroModal/ImageUpload/ImageUpload";
 
 function Header() {
   const [profileData, setProfileData] = useState(null);
   const [modalShow, setModalShow] = useState(false);
+  const [upload, setUpload] = useState(false);
 
   useEffect(() => {
     fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
@@ -18,8 +22,7 @@ function Header() {
       .then((res) => res.json())
       .then((data) => {
         setProfileData(data);
-        console.log(data);
-      });
+      })
   }, []);
 
   return (
@@ -27,17 +30,27 @@ function Header() {
       {profileData && (
         <Card style={{ width: "36rem" }}>
           <div className="profile-container">
-            <Card.Img
-              variant="top"
-              src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187.jpg"
-            />
+            <Card.Img variant="top" src={profileData.image} />
             <div className="propic-absolute">
-              <img
-                style={{ width: "100px" }}
-                src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187.jpg"
+              <img style={{ width: "100px" }} src={profileData.image} />
+              <Icon.Upload
+                size={18}
+                className="upload-icon"
+                onClick={() => setUpload(true)}
               />
             </div>
           </div>
+          {upload && (
+            <HeroModal
+              user={profileData}
+              show={upload}
+              type={"upload"}
+              onHide={() => {
+                setUpload(false);
+              }}
+            />
+          )}
+
           <Card.Body>
             <div className="hero-info">
               <div>
@@ -53,10 +66,17 @@ function Header() {
                 </div>
               </div>
               <div>
-                <Button onClick={() => {setModalShow(true)}}>Apri il modale</Button>
+                <Button
+                  onClick={() => {
+                    setModalShow(true);
+                  }}
+                >
+                  Apri il modale
+                </Button>
                 <HeroModal
-                    user={profileData}
-                  pepe={modalShow}
+                  user={profileData}
+                  show={modalShow}
+                  type={"profile"}
                   onHide={() => {
                     setModalShow(false);
                   }}

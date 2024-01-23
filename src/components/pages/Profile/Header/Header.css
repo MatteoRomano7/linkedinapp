@@ -4,10 +4,22 @@
 
 .propic-absolute {
     position: absolute;
-    bottom: 0;
+    bottom: -20px;
     left: 0;
 }
 
 .profile-container {
     position: relative;
 }
+
+.upload-icon {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(85, 85, 177);
+    border-radius: 5px;
+    padding: 2px;
+    cursor: pointer;
+}
+
