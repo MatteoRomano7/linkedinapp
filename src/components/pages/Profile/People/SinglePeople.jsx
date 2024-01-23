@@ -13,7 +13,7 @@ const SinglePeople = ({ users }) => {
     <div>
       {users.map((user) => (
         <div key={user._id} className="d-flex flex-row align-items-center px-2">
-          <div className="cardImgsideBar d-flex flex-row mt-1">
+          <div className="d-flex flex-row mt-1">
             <img
               src={user.image}
               alt="foto"
