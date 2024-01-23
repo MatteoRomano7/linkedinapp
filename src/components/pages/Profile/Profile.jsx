@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
+import Analytics from "./Analytics/Analytics";
 
 function Profile() {
   useEffect(() => {
@@ -18,6 +19,8 @@ function Profile() {
     <>
       <p>ciao sono home</p>
       <Link to="/">vai alla home</Link>
+      
+      
     </>
   );
 }
