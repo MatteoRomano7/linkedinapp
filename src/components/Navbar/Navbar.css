@@ -1,0 +1,11 @@
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navlink-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    white-space: nowrap;
+}
