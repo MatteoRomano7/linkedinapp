@@ -55,8 +55,7 @@ function Profile() {
     </Container>
   );
 
-    </>
-  )
+  
 }
 
 export default Profile;
