@@ -36,7 +36,12 @@ const Experiences = () => {
         </DropdownToggle>
 
         <DropdownMenu>
-          <DropdownItem onClick={handleAddPosition}>
+          <DropdownItem
+            onClick={() => {
+              handleAddPosition()
+              console.log("pepe")
+            }}
+          >
             <PlusLg className={styles.dropdownIcon} />
             Aggiungi posizione lavorativa
           </DropdownItem>
@@ -56,7 +61,10 @@ const Experiences = () => {
         </div>
 
         {showModal && (
-          <AddExperienceModal isOpen={showModal} onRequestClose={closeModal} />
+          <AddExperienceModal
+            isOpen={showModal}
+            onRequestClose={() => closeModal()}
+          />
         )}
       </Dropdown>
     </>
@@ -64,4 +72,3 @@ const Experiences = () => {
 }
 
 export default Experiences
-
