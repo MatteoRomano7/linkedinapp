@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Form, Card, Modal, Button, Col, Row, Container } from "react-bootstrap";
 import { FcClapperboard, FcPicture, FcPlanner, FcViewDetails } from "react-icons/fc";
+import { useSelector } from 'react-redux';
 
 const NewPost = () => {
+  const profilo = useSelector(state => state.profile)
   const [show, setShow] = useState(false);
   const [newPost, setNewPost] = useState({ text: "" });
-  const [profileImage, setProfileImage] = useState("");
   const [imageFile, setImageFile] = useState(null);
 
-  useEffect(() => {
+/*   useEffect(() => {
     fetchProfileImage();
   }, []);
-
-  const fetchProfileImage = async () => {
+ */
+/*   const fetchProfileImage = async () => {
     try {
       const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
         headers: {
@@ -34,7 +35,7 @@ const NewPost = () => {
     } catch (error) {
       console.error(error);
     }
-  };
+  }; */
   
 
   const handleShow = () => setShow(true);
@@ -90,7 +91,7 @@ const NewPost = () => {
         <Card.Body>
           <Row className="d-flex">
             <Col xs={2}>
-              <Card.Img src={profileImage} alt="foto" className="fotoTonda" />
+              <Card.Img src={profilo.image} alt="foto" className="fotoTonda" />
             </Col>
             <Col xs={10}>
               <Form className="my-4">

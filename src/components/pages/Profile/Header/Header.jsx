@@ -14,9 +14,6 @@ function Header() {
   const dispatch = useDispatch();
   const profileData = useSelector((state) => state.profile);
 
-  console.log("header render");
-
-
   useEffect(() => {
     dispatch(fetchProfile());
     console.log("fetch");
@@ -62,7 +59,7 @@ function Header() {
                   <address>{profileData.area}</address>
 
                   <a href="#" style={{textDecoration: "none"}}>Contact info</a>
-                </div>{" "}
+                </div>
                 <div className="d-flex gap-2">
                   <Button className="fullcolor-button">Open to</Button>
                   <Button className="outlined-button">
