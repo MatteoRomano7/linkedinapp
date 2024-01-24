@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Pencil, PlusLg, CalendarDate } from "react-bootstrap-icons"
 import styles from "./Experiences.module.css"
 import AddExperienceModal from "./AddExperiencesModal"
@@ -11,10 +11,37 @@ import {
 
 const Experiences = () => {
   const [showModal, setShowModal] = useState(false)
+  const [experiences, setExperiences] = useState([])
+  const userId = "65ae4145600be100183a869e"
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlNDE0NTYwMGJlMTAwMTgzYTg2OWUiLCJpYXQiOjE3MDU5MTg3ODksImV4cCI6MTcwNzEyODM4OX0.zelRRJYDxN7z_QvRue4bD_OyrWO_ZqTIeG82ZGAzpAo"
+  const apiUrl = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`
+  const headers = new Headers({
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  })
+
+  const options = {
+    method: "GET",
+    headers: headers,
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(apiUrl, options)
+        const data = await response.json()
+        setExperiences(data)
+      } catch (error) {
+        console.error("Error fetching data:", error)
+      }
+    }
+
+    fetchData()
+  }, []) // Empty dependency array means this effect runs once after the initial render
 
   const handleAddPosition = () => {
     setShowModal(true)
-    console.log("Aggiungi posizione lavorativa")
   }
 
   const handleAddBreak = () => {
@@ -39,7 +66,6 @@ const Experiences = () => {
           <DropdownItem
             onClick={() => {
               handleAddPosition()
-              console.log("pepe")
             }}
           >
             <PlusLg className={styles.dropdownIcon} />
@@ -51,14 +77,16 @@ const Experiences = () => {
           </DropdownItem>
         </DropdownMenu>
 
-        <div className={styles.content}>
-          <img src="url_dell_immagine" alt="Esperienza" />
-          <div className={styles.text}>
-            <p>NOME LAVORO</p>
-            <p>Altre informazioni sul lavoro</p>
+        {experiences.map((experience) => (
+          <div key={experience._id} className={styles.content}>
+            <img src="url_dell_immagine" alt="Esperienza" />
+            <div className={styles.text}>
+              <p>{experience.role}</p>
+              <p>{experience.description}</p>
+            </div>
+            <Pencil className={styles.pencilIcon} />
           </div>
-          <Pencil className={styles.pencilIcon} />
-        </div>
+        ))}
 
         {showModal && (
           <AddExperienceModal
