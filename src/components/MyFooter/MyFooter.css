@@ -1,0 +1,13 @@
+.profile-footer {
+    /* width: 100%;
+    background-color: white;
+    padding-top: 1rem;
+    font-size: 0.8rem; */
+    white-space: nowrap;
+    font-size: 0.8rem;
+}
+
+.profile-footer a:hover {
+    color: black !important;
+
+}

@@ -8,7 +8,7 @@ const Activity = () => {
       <div className="border-bottom">
         <div className="d-flex justify-content-between align-items-center">
           <div>
-            <h2>Attivitá</h2>
+            <h3>Attivitá</h3>
           </div>
           <div>
             <button className="outlined-button">Crea un post</button>
@@ -22,9 +22,9 @@ const Activity = () => {
           <p>I post che condividi appariranno qui</p>
         </div>
       </div>
-      <div className="d-flex justify-content-center">
-        <h4>Show all Activities</h4>
-        <ArrowRight className="align-items-center m-2" />
+      <div className="showAll">
+        <h5>Show all Activities</h5>
+        <ArrowRight className="align-items-center" />
       </div>
     </Container>
   );

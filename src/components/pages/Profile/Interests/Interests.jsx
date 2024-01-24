@@ -1,9 +1,9 @@
 
 const Interests = () => {
     return (
-        <div>
+        <div className="section border rounded p-2">
             <div>
-                <h2>Interessi</h2>
+                <h3>Interessi</h3>
                 <p>Aziende</p>
             </div>
             <div className="d-flex">
