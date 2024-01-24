@@ -6,7 +6,7 @@ const Analytics = () => {
   return (
     <Container fluid className="border rounded section">
       <div>
-        <h2>Analytics</h2>
+        <h3>Analytics</h3>
         <p className="onlyYou">
           <EyeFill />
           <span>Private to you</span>

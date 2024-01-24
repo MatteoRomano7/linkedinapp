@@ -2,9 +2,9 @@ import { Plus, Pencil } from "react-bootstrap-icons"
 
 const Training = () =>{
     return (
-        <div >
+        <div className="section border rounded p-2">
             <div className="d-flex justify-content-between">
-            <h2>Formazione</h2>
+            <h3>Formazione</h3>
             <div>
                 <Plus className="m-2 fs-2"/>
                 <Pencil />

@@ -3,6 +3,7 @@ import { Pencil, PlusLg, CalendarDate } from "react-bootstrap-icons"
 import styles from "./Experiences.module.css"
 import AddExperienceModal from "./AddExperiencesModal"
 import EditExperienceModal from "./EditExperienceModal"
+
 import {
   Dropdown,
   DropdownItem,
@@ -33,6 +34,7 @@ const Experiences = ({}) => {
   const userId = "65ae435b600be100183a86a0";
   const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlNDM1YjYwMGJlMTAwMTgzYTg2YTAiLCJpYXQiOjE3MDU5MTkzMjQsImV4cCI6MTcwNzEyODkyNH0.ChId8_RqSdZkU4BzmkPO02cbeBsGdJn1mPzOwBHev0E";
+
   const apiUrl = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`;
   const headers = new Headers({
     Authorization: `Bearer ${token}`,
@@ -58,6 +60,7 @@ const Experiences = ({}) => {
     fetchData();
   }, []);
 
+
   const handleAddPosition = () => {
     setShowModal(true);
   };
@@ -69,7 +72,7 @@ const Experiences = ({}) => {
   const closeModal = () => {
     setShowModal(false);
   };
-
+  
   const handleEditSubmit = async (updatedExperience, experienceId) => {
     try {
       const editUrl = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${experienceId}`;
@@ -113,17 +116,17 @@ const Experiences = ({}) => {
   };
 
 
-
   return (
-    <>
-      <div className={styles.header}>
-        <p className={styles.experienceText}>Esperienza</p>
-      </div>
+    <div className="border rounded bg-white p-2">
+      <div className={styles.header}></div>
       <Dropdown>
-        <DropdownToggle className="bg-transparent border-0 ">
-          <PlusLg className={styles.plusIcon} />
-        </DropdownToggle>
+        <div className="d-flex justify-content-between">
+          <p className={styles.experienceText}>Esperienza</p>
 
+          <DropdownToggle className="bg-transparent border-0">
+            <PlusLg size={24} className={`${styles.plusIcon}`} />
+          </DropdownToggle>
+        </div>
         <DropdownMenu>
           <DropdownItem
             onClick={() => {
@@ -140,7 +143,10 @@ const Experiences = ({}) => {
         </DropdownMenu>
 
         {experiences.map((experience) => (
-          <div key={experience._id} className={styles.content}>
+          <div
+            key={experience._id}
+            className={`${styles.content} border rounded`}
+          >
             <img src="url_dell_immagine" alt="Esperienza" />
             <div className={styles.text}>
               <p>{experience.role}</p>
@@ -193,3 +199,4 @@ const Experiences = ({}) => {
 };
 
 export default Experiences;
+
