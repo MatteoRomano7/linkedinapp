@@ -40,8 +40,8 @@ const AddExperienceModal = ({ profile }) => {
   }
 
   const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlNDE0NTYwMGJlMTAwMTgzYTg2OWUiLCJpYXQiOjE3MDU5MTg3ODksImV4cCI6MTcwNzEyODM4OX0.zelRRJYDxN7z_QvRue4bD_OyrWO_ZqTIeG82ZGAzpAo"
-  const userId = "65ae4145600be100183a869e"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlNDM1YjYwMGJlMTAwMTgzYTg2YTAiLCJpYXQiOjE3MDU5MTkzMjQsImV4cCI6MTcwNzEyODkyNH0.ChId8_RqSdZkU4BzmkPO02cbeBsGdJn1mPzOwBHev0E"
+  const userId = "65ae435b600be100183a86a0"
 
   const handleSubmit = async (e) => {
     e.preventDefault()
