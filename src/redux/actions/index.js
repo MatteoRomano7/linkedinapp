@@ -16,9 +16,9 @@ export const fetchProfile = () => {
   };
 };
 
-export const fetchJobs= (query) => {
+export const fetchJobs= (query, category) => {
   return async (dispatch) => {
-    const res = await fetch(`https://strive-benchmark.herokuapp.com/api/jobs?search=${query}`)
+    const res = await fetch(`https://strive-benchmark.herokuapp.com/api/jobs?${category}=${query}&limit=10`)
     const data = await res.json()
     console.log(data)
 

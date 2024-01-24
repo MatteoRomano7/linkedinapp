@@ -1,0 +1,16 @@
+.radio-inputs {
+    display: flex;
+    justify-content: space-around;
+}
+
+.jobform-container {
+    background-color: white;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.job-form {
+    width: 80%;
+}

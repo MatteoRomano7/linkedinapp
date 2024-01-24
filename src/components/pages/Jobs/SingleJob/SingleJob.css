@@ -1,5 +1,7 @@
 .jobContainer {
     display: flex;
+    width: 600px;
+
     gap: 2rem;
 }
 

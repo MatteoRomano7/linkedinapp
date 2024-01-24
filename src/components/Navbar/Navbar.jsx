@@ -41,7 +41,7 @@ function MyNavbar() {
             className="tuam"
             onSubmit={(e) => {
               e.preventDefault();
-              dispatch(fetchJobs(searchQuery));
+              dispatch(fetchJobs(searchQuery, "search"));
               navigate(`/jobs/${searchQuery}`, {replace: true})
             }}
           >

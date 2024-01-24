@@ -17,7 +17,9 @@ function App() {
         <Routes>
           <Route path="/" Component={() => <Home />} />
           <Route path="/profile/:user" Component={() => <Profile />} />
+          <Route path="/jobs" Component={() => <Jobs />} />
           <Route path="/jobs/:searchQuery" Component={() => <Jobs />} />
+
         </Routes>
         <MyFooter />
       </div>

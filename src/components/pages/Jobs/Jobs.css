@@ -1,7 +1,11 @@
 .jobs-wrapper {
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
     gap: 1rem;
     margin-top: 1rem;
 }
 
+.jobs-center-element {
+    width: 600px;
+}
