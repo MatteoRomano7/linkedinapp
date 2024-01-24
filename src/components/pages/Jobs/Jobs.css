@@ -1,0 +1,7 @@
+.jobs-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+

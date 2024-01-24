@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
+import { useDispatch } from "react-redux";
+import { fetchJobs } from "../../redux/actions";
 import "./Navbar.css";
+import { useNavigate } from "react-router-dom";
 import {
   Navbar,
   Nav,
@@ -18,24 +21,36 @@ import {
   SuitClubFill,
   ChatRightDotsFill,
   BellFill,
-  CaretDownFill,
   Grid3x3GapFill,
 } from "react-bootstrap-icons";
 
 function MyNavbar() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+
   return (
     <Navbar bg="white" expand="lg" className="sticky-top">
       <Container className="navbar-container">
         <div className="navbar-left">
-          <Navbar.Brand href="#home">
-            <Linkedin size={28} className="logoLinkedin" />
-          </Navbar.Brand>
-          <Form inline className="tuam">
+          <Link to="/">
+            <Linkedin size={32} className="logoLinkedin me-2" />
+          </Link>
+          <Form
+            inline
+            className="tuam"
+            onSubmit={(e) => {
+              e.preventDefault();
+              dispatch(fetchJobs(searchQuery));
+              navigate(`/jobs/${searchQuery}`, {replace: true})
+            }}
+          >
             <FormControl
               type="text"
               placeholder="Cerca"
               className="mr-sm-2"
               style={{ width: "300px" }}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </Form>
         </div>
@@ -56,10 +71,10 @@ function MyNavbar() {
                 </Link>
               </Col>
               <Col>
-                <Nav.Link href="#home" className="linkNavbar navlink-item">
+                <Link to="/jobs" className="linkNavbar nav-link navlink-item">
                   <SuitClubFill />
                   <p>Lavoro</p>
-                </Nav.Link>
+                </Link>
               </Col>
               <Col>
                 <Nav.Link href="#home" className="linkNavbar  navlink-item">

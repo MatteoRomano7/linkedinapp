@@ -1,4 +1,5 @@
 export const setProfile = "SET_PROFILE";
+export const setJobs = "SET_JOBS"
 
 export const fetchProfile = () => {
   return (dispatch) => {
@@ -14,3 +15,13 @@ export const fetchProfile = () => {
       .then((data) => dispatch({ type: setProfile, payload: data }));
   };
 };
+
+export const fetchJobs= (query) => {
+  return async (dispatch) => {
+    const res = await fetch(`https://strive-benchmark.herokuapp.com/api/jobs?search=${query}`)
+    const data = await res.json()
+    console.log(data)
+
+    dispatch({type: setJobs, payload: data.data})
+  }
+}

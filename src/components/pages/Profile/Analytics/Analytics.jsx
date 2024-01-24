@@ -28,9 +28,9 @@ const Analytics = () => {
           </div>
         </div>
       </div>
-      <div className="show-analytics">
-        <h4 className="py-1">Show all analytics</h4>
-        <ArrowRight className="aling-items-center m-2" />
+      <div className="showAll">
+        <h5>Show all analytics</h5>
+        <ArrowRight />
       </div>
     </Container>
   );

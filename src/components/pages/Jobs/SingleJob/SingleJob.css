@@ -1,0 +1,10 @@
+.jobContainer {
+    display: flex;
+    gap: 2rem;
+}
+
+.job-img-box {
+    width: 60px;
+    height: 60px;
+}
+

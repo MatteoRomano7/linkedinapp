@@ -22,9 +22,9 @@ const Activity = () => {
           <p>I post che condividi appariranno qui</p>
         </div>
       </div>
-      <div className="d-flex justify-content-center">
-        <h4>Show all Activities</h4>
-        <ArrowRight className="align-items-center m-2" />
+      <div className="showAll">
+        <h5>Show all Activities</h5>
+        <ArrowRight className="align-items-center" />
       </div>
     </Container>
   );

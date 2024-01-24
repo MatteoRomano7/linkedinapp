@@ -1,0 +1,19 @@
+.jobs-sidebar ul {
+    list-style: none;
+    padding-left: 0;
+}
+figure {
+    padding: 1rem;
+}
+
+.jobs-sidebar li {
+    padding: 8px 8px 8px 0;
+}
+
+.jobs-sidebar a {
+    text-decoration: none;
+}
+
+.jobs-sidebar {
+    max-width: 270px;
+}
