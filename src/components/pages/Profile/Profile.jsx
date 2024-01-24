@@ -15,7 +15,6 @@ import Experiences from "./Experiences/Experiences"
 import Header from "./Header/Header"
 
 function Profile() {
-  console.log("profile render")
   const [users, setUsers] = useState(null)
 
   useEffect(() => {

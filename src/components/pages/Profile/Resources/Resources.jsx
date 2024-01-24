@@ -31,9 +31,9 @@ const Resources = () => {
             <p>Salva e gestisci i tuoi collegamenti e interessi.</p>
           </div>
         </div>
-      <div className="d-flex justify-content-center py-1">
-        <h4>Show all resources</h4>
-        <ArrowRight className="aling-items-center m-2" />
+      <div className="showAll">
+        <h5>Show all resources</h5>
+        <ArrowRight />
       </div>
     </Container>
   );

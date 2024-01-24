@@ -36,3 +36,11 @@
 .section {
     background-color: white;
 }
+
+.showAll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    gap: 12px;
+}
