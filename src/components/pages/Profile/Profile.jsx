@@ -7,9 +7,8 @@ import { Container } from "react-bootstrap"
 import Analytics from "./Analytics/Analytics"
 import Activity from "./Activity/Activity"
 import Resources from "./Resources/Resources"
-import Training from "./Activity/Training"
-import Interests from "./Activity/Interests"
-import Experience from "./Activity/Experience"
+import Training from "./Training/Training"
+import Interests from "./Interests/Interests"
 import Language from "./Language/Langugage"
 import Hiring from "../hiring/Hiring"
 import Experiences from "./Experiences/Experiences"
@@ -44,7 +43,7 @@ function Profile() {
         <Activity />
         <Training />
         <Interests />
-        <Hiring />
+        {/* <Hiring /> */}
         <Experiences />
       </div>
       <div className="profile-sidebar">
