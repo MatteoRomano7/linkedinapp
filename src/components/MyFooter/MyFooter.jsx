@@ -1,5 +1,7 @@
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
+import ImagineFooter from"../../../public/linkedin_logo_footer.png"
+
 
 const MyFooter = () => {
   return (
@@ -129,6 +131,7 @@ const MyFooter = () => {
           </p>
         </div>
       </div>
+      
     </footer>
   )
 }
