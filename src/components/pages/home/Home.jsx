@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LinkedinNews from "./LinkedinNews";
 import NewPost from "./NewPost";
+import Post from "./Post";
 import Hiring from "../hiring/Hiring";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProfile } from "../../../redux/actions";
@@ -26,6 +27,8 @@ function Home() {
       <p>ciao sono home</p>
       <Link to="/profile/me">vai al profilo</Link>
       <NewPost />
+      <Post />
+
       <LinkedinNews />
       <Hiring />
       <ProfileDetails />
