@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import LinkedinNews from "./LinkedinNews";
 import NewPost from "./NewPost";
 
+
+import MiniFooter from "../../MiniFooter/MiniFooter";
+
 function Home() {
   return (
     <>
@@ -10,6 +13,10 @@ function Home() {
       <Link to="/profile/me">vai al profilo</Link>
       <NewPost />
       <LinkedinNews />
+
+ <MiniFooter />
+ 
+
 
     </>
   )
