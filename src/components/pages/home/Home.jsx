@@ -1,26 +1,21 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import LinkedinNews from "./LinkedinNews";
-import NewPost from "./NewPost";
-import Post from "./Post";
-import Hiring from "../hiring/Hiring";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProfile } from "../../../redux/actions";
-import { useEffect } from "react";
-import ProfileDetails from "./ProfileDetails";
-import LinkGroup from "./LinkGroup";
-
-
-
-
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
+import LinkedinNews from "./LinkedinNews"
+import NewPost from "./NewPost"
+import Post from "./Post"
+import Hiring from "../hiring/Hiring"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchProfile } from "../../../redux/actions"
+import { useEffect } from "react"
+import ProfileDetails from "./ProfileDetails"
+import LinkGroup from "./LinkGroup"
 
 function Home() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchProfile());
-    console.log("fetch");
-  }, []);
-
+    dispatch(fetchProfile())
+    console.log("fetch")
+  }, [])
 
   return (
     <>
@@ -30,10 +25,9 @@ function Home() {
       <Post />
 
       <LinkedinNews />
-      <Hiring />
+
       <ProfileDetails />
       <LinkGroup />
-
     </>
   )
 }
