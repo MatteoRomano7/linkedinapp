@@ -52,13 +52,7 @@ function Profile() {
         <People users={users} />
       </div>
     </Container>
-<<<<<<< HEAD
   );
-
-  
-=======
-  )
->>>>>>> 1adafccbdf77e88956304800fc9c75027abed59e
 }
 
 export default Profile
