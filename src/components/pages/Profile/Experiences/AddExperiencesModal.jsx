@@ -1,134 +1,187 @@
-import React from 'react';
-import { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
+import React from "react"
+import { useState } from "react"
+import Modal from "react-bootstrap/Modal"
+import { Button } from "react-bootstrap"
+import { Form } from "react-bootstrap"
+import Card from "react-bootstrap/Card"
 
-const AddExperienceModal = ({ isOpen, onRequestClose }) => {
-  const [qualifica, setQualifica] = useState('');
-  const [tipoImpiego, setTipoImpiego] = useState('');
-  const [nomeAzienda, setNomeAzienda] = useState('');
-  const [localita, setLocalita] = useState('');
-  const [inizioMese, setInizioMese] = useState('');
-  const [inizioAnno, setInizioAnno] = useState('');
-  const [fineMese, setFineMese] = useState('');
-  const [fineAnno, setFineAnno] = useState('');
+const AddExperienceModal = ({ profile }) => {
+  const [show, setShow] = useState(false)
+  const [experience, setExperience] = useState({
+    role: "",
+    company: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    area: "",
+  })
 
-  const handleSave = () => {
-    
-    console.log('Dati salvati:', {
-      qualifica,
-      tipoImpiego,
-      nomeAzienda,
-      localita,
-      inizioMese,
-      inizioAnno,
-      fineMese,
-      fineAnno,
-    });
+  const [showAlert, setShowAlert] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState(false)
+  const formDataExperienceImg = new FormData()
 
-    
-    onRequestClose();
-  };
+  const handleClose = () => {
+    setShow(false)
+    setShowAlert(false)
+  }
+
+  const handleShow = () => setShow(true)
+  const showExperience = () => setModalExperience(true)
+  const closeExperience = () => setModalExperience(false)
+
+  const [modalExperience, setModalExperience] = useState(false)
+
+  const handleInputChange = (property, value) => {
+    setExperience({
+      ...experience,
+      [property]: value,
+    })
+  }
+
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlNDE0NTYwMGJlMTAwMTgzYTg2OWUiLCJpYXQiOjE3MDU5MTg3ODksImV4cCI6MTcwNzEyODM4OX0.zelRRJYDxN7z_QvRue4bD_OyrWO_ZqTIeG82ZGAzpAo"
+  const userId = "65ae4145600be100183a869e"
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`,
+        {
+          method: "POST",
+          body: JSON.stringify(experience),
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      if (res.ok) {
+        setExperience({
+          role: "",
+          company: "",
+          startDate: "",
+          endDate: "",
+          description: "",
+          area: "",
+        })
+        setShowAlert(true)
+      } else {
+        throw new Error("Errore nel salvataggio dell'esperienza")
+      }
+    } catch (error) {
+      console.log("Errore:", error)
+    }
+  }
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      contentLabel="Aggiungi Esperienza"
-    >
-      <div>
-        <label>
-          Qualifica
-          <input
-            type="text"
-            value={qualifica}
-            onChange={(e) => setQualifica(e.target.value)}
-            required
-          />
-        </label>
-      </div>
+    <>
+      <Card className="mb-3">
+        <Card.Body>
+          <div className="d-flex justify-content-between">
+            <Card.Title>Esperienza</Card.Title>
+            <div>
+              <i
+                type="button"
+                className="bi bi-plus-lg px-3"
+                onClick={showExperience}
+              >
+                aggiungi
+              </i>
+            </div>
+          </div>
 
-      <div>
-        <label>
-          Tipo di Impiego
-          <select
-            value={tipoImpiego}
-            onChange={(e) => setTipoImpiego(e.target.value)}
-          >
-            <option value="">Seleziona...</option>
-            <option value="tempo_pieno">A Tempo Pieno</option>
-            <option value="part_time">Part Time</option>
-            <option value="autonomo">Autonomo</option>
-            <option value="freelance">Freelance</option>
-            <option value="contratto">A Contratto</option>
-            <option value="stage">Stage</option>
-            <option value="apprendistato">Apprendistato</option>
-            <option value="stagionale">Stagionale</option>
-          </select>
-        </label>
-      </div>
+          <Modal show={modalExperience} onHide={closeExperience}>
+            <Modal.Header closeButton>
+              <Modal.Title>Aggiungi nuova esperienza</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label className="mb-1">Ruolo ricoperto</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Inserisci il ruolo ricoperto..."
+                    value={experience.role}
+                    onChange={(e) => handleInputChange("role", e.target.value)}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label className="mb-1">Nome azienda</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Inserisci il nome dell'azienda..."
+                    value={experience.company}
+                    onChange={(e) =>
+                      handleInputChange("company", e.target.value)
+                    }
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label className="mb-1">Descrizione</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Inserisci la descrizione del lavoro svolto..."
+                    value={experience.description}
+                    onChange={(e) =>
+                      handleInputChange("description", e.target.value)
+                    }
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label className="mb-1">Località</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Inserisci la località..."
+                    value={experience.area}
+                    onChange={(e) => handleInputChange("area", e.target.value)}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label className="mb-1">Data di inizio</Form.Label>
+                  <Form.Control
+                    type="date"
+                    value={experience.startDate}
+                    onChange={(e) =>
+                      handleInputChange("startDate", e.target.value)
+                    }
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label className="mb-1">Data di fine</Form.Label>
+                  <Form.Control
+                    type="date"
+                    value={experience.endDate}
+                    onChange={(e) =>
+                      handleInputChange(
+                        "endDate",
+                        e.target.value || "ancora in corso"
+                      )
+                    }
+                  />
+                </Form.Group>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer className="d-flex justify-content-center">
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={(e) => {
+                  e.preventDefault()
+                  handleSubmit(e)
+                  closeExperience()
+                }}
+              >
+                Aggiungi esperienza
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </Card.Body>
+      </Card>
+    </>
+  )
+}
 
-      <div>
-        <label>
-          Nome Azienda
-          <input
-            type="text"
-            value={nomeAzienda}
-            onChange={(e) => setNomeAzienda(e.target.value)}
-            required
-          />
-        </label>
-      </div>
-
-      <div>
-        <label>
-          Località
-          <input
-            type="text"
-            value={localita}
-            onChange={(e) => setLocalita(e.target.value)}
-          />
-        </label>
-      </div>
-
-      <div>
-        <label>
-          Data di Inizio
-          <select
-            value={inizioMese}
-            onChange={(e) => setInizioMese(e.target.value)}
-          >
-           
-          </select>
-          <select
-            value={inizioAnno}
-            onChange={(e) => setInizioAnno(e.target.value)}
-          >
-            
-          </select>
-        </label>
-      </div>
-
-      <div>
-        <label>
-          Data di Fine
-          <select
-            value={fineMese}
-            onChange={(e) => setFineMese(e.target.value)}
-          >
-           
-          </select>
-          <select
-            value={fineAnno}
-            onChange={(e) => setFineAnno(e.target.value)}
-          >
-           
-          </select>
-        </label>
-      </div>
-
-      <button onClick={handleSave}>Salva</button>
-    </Modal>
-  );
-};
-
-export default AddExperienceModal;
+export default AddExperienceModal
