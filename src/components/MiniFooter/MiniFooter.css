@@ -1,6 +1,10 @@
-.FooterGrassseto{
-    font-weight: bold;
+.FooterGrassseto {
+  font-weight: bold;
 }
-.bingo{
-    background-color: #F4F2EE;
+.bingo {
+  background-color: #f4f2ee;
+}
+
+.signatureLogo img {
+  width: 100px;
 }
