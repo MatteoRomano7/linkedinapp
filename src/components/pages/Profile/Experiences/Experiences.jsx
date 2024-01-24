@@ -3,6 +3,7 @@ import { Pencil, PlusLg, CalendarDate } from "react-bootstrap-icons"
 import styles from "./Experiences.module.css"
 import AddExperienceModal from "./AddExperiencesModal"
 import EditExperienceModal from "./EditExperienceModal"
+import * as Icon from "react-bootstrap-icons"
 
 import {
   Dropdown,
@@ -12,10 +13,9 @@ import {
   Button,
 } from "react-bootstrap"
 
-
 const Experiences = ({}) => {
-  const [showModal, setShowModal] = useState(false);
-  const [experiences, setExperiences] = useState([]);
+  const [showModal, setShowModal] = useState(false)
+  const [experiences, setExperiences] = useState([])
   const [editExperience, setEditExperience] = useState({
     role: "",
     company: "",
@@ -23,98 +23,98 @@ const Experiences = ({}) => {
     area: "",
     startDate: "",
     endDate: "",
-  });
-  const [editExperienceId, setEditExperienceId] = useState("");
-  const [editModalShow, setEditModalShow] = useState(false);
+  })
+  const [editExperienceId, setEditExperienceId] = useState("")
+  const [editModalShow, setEditModalShow] = useState(false)
 
   const handleEditModalClose = () => {
-    setEditModalShow(false);
-  };
+    setEditModalShow(false)
+  }
 
-  const userId = "65ae435b600be100183a86a0";
+  const userId = "65ae435b600be100183a86a0"
   const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlNDM1YjYwMGJlMTAwMTgzYTg2YTAiLCJpYXQiOjE3MDU5MTkzMjQsImV4cCI6MTcwNzEyODkyNH0.ChId8_RqSdZkU4BzmkPO02cbeBsGdJn1mPzOwBHev0E";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlNDM1YjYwMGJlMTAwMTgzYTg2YTAiLCJpYXQiOjE3MDU5MTkzMjQsImV4cCI6MTcwNzEyODkyNH0.ChId8_RqSdZkU4BzmkPO02cbeBsGdJn1mPzOwBHev0E"
 
-  const apiUrl = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`;
+  const apiUrl = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`
   const headers = new Headers({
     Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
-  });
+  })
 
   const options = {
     method: "GET",
     headers: headers,
-  };
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(apiUrl, options);
-        const data = await response.json();
-        setExperiences(data);
+        const response = await fetch(apiUrl, options)
+        const data = await response.json()
+        setExperiences(data)
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching data:", error)
       }
-    };
+    }
 
-    fetchData();
-  }, []);
-
+    fetchData()
+  }, [])
 
   const handleAddPosition = () => {
-    setShowModal(true);
-  };
+    setShowModal(true)
+  }
 
   const handleAddBreak = () => {
-    console.log("Aggiungi pausa lavorativa");
-  };
+    console.log("Aggiungi pausa lavorativa")
+  }
 
   const closeModal = () => {
-    setShowModal(false);
-  };
-  
+    setShowModal(false)
+  }
+
   const handleEditSubmit = async (updatedExperience, experienceId) => {
     try {
-      const editUrl = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${experienceId}`;
+      const editUrl = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${experienceId}`
       const editOptions = {
         method: "PUT",
         headers: headers,
         body: JSON.stringify(updatedExperience),
-      };
+      }
 
-      const response = await fetch(editUrl, editOptions);
+      const response = await fetch(editUrl, editOptions)
       if (response.ok) {
         // Gestisci la risposta se necessario
       } else {
-        console.error("Errore durante la modifica dell'esperienza");
+        console.error("Errore durante la modifica dell'esperienza")
       }
     } catch (error) {
-      console.error("Errore durante la richiesta PUT:", error);
+      console.error("Errore durante la richiesta PUT:", error)
     }
-  };
+  }
 
   const handleDeleteExperience = async (experienceId) => {
     try {
-      const deleteUrl = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${experienceId}`;
+      const deleteUrl = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${experienceId}`
       const deleteOptions = {
         method: "DELETE",
         headers: headers,
-      };
+      }
 
-      const response = await fetch(deleteUrl, deleteOptions);
+      const response = await fetch(deleteUrl, deleteOptions)
       if (response.ok) {
         // Rimuovi l'esperienza dalla lista dopo la cancellazione
         setExperiences((prevExperiences) =>
-          prevExperiences.filter((experience) => experience._id !== experienceId)
-        );
+          prevExperiences.filter(
+            (experience) => experience._id !== experienceId
+          )
+        )
       } else {
-        console.error("Errore durante la cancellazione dell'esperienza");
+        console.error("Errore durante la cancellazione dell'esperienza")
       }
     } catch (error) {
-      console.error("Errore durante la richiesta DELETE:", error);
+      console.error("Errore durante la richiesta DELETE:", error)
     }
-  };
-
+  }
 
   return (
     <div className="border rounded bg-white p-2">
@@ -130,7 +130,7 @@ const Experiences = ({}) => {
         <DropdownMenu>
           <DropdownItem
             onClick={() => {
-              handleAddPosition();
+              handleAddPosition()
             }}
           >
             <PlusLg className={styles.dropdownIcon} />
@@ -155,7 +155,7 @@ const Experiences = ({}) => {
             <Pencil
               className={styles.pencilIcon}
               onClick={() => {
-                setEditExperienceId(experience._id);
+                setEditExperienceId(experience._id)
                 setEditExperience({
                   role: experience.role,
                   company: experience.company,
@@ -163,16 +163,16 @@ const Experiences = ({}) => {
                   area: experience.area,
                   startDate: experience.startDate,
                   endDate: experience.endDate,
-                });
-                setEditModalShow(true);
+                })
+                setEditModalShow(true)
               }}
             />
             <Button
-            variant="danger"
-            onClick={() => handleDeleteExperience(experience._id)}
+              variant="transparent"
+              onClick={() => handleDeleteExperience(experience._id)}
             >
-            Cancella Esperienza
-          </Button>
+              <Icon.Trash />
+            </Button>
           </div>
         ))}
 
@@ -195,8 +195,7 @@ const Experiences = ({}) => {
         )}
       </Dropdown>
     </div>
-  );
-};
+  )
+}
 
-export default Experiences;
-
+export default Experiences
