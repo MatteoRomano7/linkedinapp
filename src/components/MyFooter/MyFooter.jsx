@@ -1,9 +1,10 @@
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
+import "./MyFooter.css"
 
 const MyFooter = () => {
   return (
-    <footer className="bg-transparent text-dark my-5 ">
+    <footer className="text-dark mt-5 profile-footer">
       <div className="container">
         <div className="row">
           <div className="col-md-2 mb-1 ">

@@ -18,6 +18,10 @@
 .plusIcon {
   cursor: pointer;
   color: black;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  
 }
 
 .dropdownContainer {
@@ -60,9 +64,11 @@
   display: flex;
   align-items: center;
   margin-top: 10px;
+  background-color: rgb(245, 245, 245);
+  padding: 12px;
 }
 
-img {
+.content img {
   width: 100px; /* Personalizza la larghezza dell'immagine secondo le tue esigenze */
   height: auto;
   margin-right: 10px;

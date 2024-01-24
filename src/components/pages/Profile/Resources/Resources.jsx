@@ -5,7 +5,7 @@ const Resources = () => {
   return (
     <Container fluid className="border rounded section">
       <div>
-        <h2>Risorse</h2>
+        <h3>Risorse</h3>
 
         <p className="onlyYou">
           <EyeFill /> <span>Solo per te</span>
@@ -15,7 +15,7 @@ const Resources = () => {
         <div className="profile-highlight">
           <Cast size={24} />
           <div>
-            <h3>Modalitá creazione di contenuti</h3>
+            <h5>Modalitá creazione di contenuti</h5>
             <p>
               Fatti scoprire. metti in risalto i contenuti sul tuo profilo e
               accedi agli strumenti di creazione
@@ -27,7 +27,7 @@ const Resources = () => {
         <div className="profile-highlight border-bottom">
           <PeopleFill size={24} />
           <div>
-            <h3>La mia rete</h3>
+            <h5>La mia rete</h5>
             <p>Salva e gestisci i tuoi collegamenti e interessi.</p>
           </div>
         </div>
