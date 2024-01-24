@@ -84,7 +84,7 @@ const Experiences = ({}) => {
 
       const response = await fetch(editUrl, editOptions);
       if (response.ok) {
-        // Gestisci la risposta se necessario
+        
       } else {
         console.error("Errore durante la modifica dell'esperienza");
       }
@@ -103,7 +103,7 @@ const Experiences = ({}) => {
 
       const response = await fetch(deleteUrl, deleteOptions);
       if (response.ok) {
-        // Rimuovi l'esperienza dalla lista dopo la cancellazione
+        
         setExperiences((prevExperiences) =>
           prevExperiences.filter((experience) => experience._id !== experienceId)
         );
