@@ -10,6 +10,9 @@ import { useEffect } from "react"
 import ProfileDetails from "./ProfileDetails"
 import LinkGroup from "./LinkGroup"
 
+
+import MiniFooter from "../../MiniFooter/MiniFooter";
+
 function Home() {
   const dispatch = useDispatch()
   useEffect(() => {
@@ -26,8 +29,15 @@ function Home() {
 
       <LinkedinNews />
 
+
+ <MiniFooter />
+ 
+
+
+
       <ProfileDetails />
       <LinkGroup />
+
     </>
   )
 }

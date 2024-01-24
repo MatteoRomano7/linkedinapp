@@ -1,5 +1,9 @@
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
+
+
+
+
 import "./MyFooter.css"
 
 const MyFooter = () => {
@@ -130,6 +134,7 @@ const MyFooter = () => {
           </p>
         </div>
       </div>
+      
     </footer>
   )
 }
