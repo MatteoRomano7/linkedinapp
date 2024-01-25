@@ -37,7 +37,6 @@ function MyNavbar() {
             <Linkedin size={32} className="logoLinkedin me-2" />
           </Link>
           <Form
-            inline
             className="tuam"
             onSubmit={(e) => {
               e.preventDefault();

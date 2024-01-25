@@ -14,7 +14,6 @@ function SingleJob({ data }) {
             <Icon.Buildings size={50} />
           )}
           <source srcset={data.company_logo_url} />
-          {/* <img src={data.company_logo_url} className="img-fluid" /> */}
         </div>
         <div>
           <p>{data.company_name}</p>

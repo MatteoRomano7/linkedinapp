@@ -15,6 +15,7 @@ function App() {
       <div className="global-wrapper">
         <Navbar />
         <Routes>
+          <Route path="/login" element={<p>PEPE</p>}/>
           <Route path="/" Component={() => <Home />} />
           <Route path="/profile/:user" Component={() => <Profile />} />
           <Route path="/jobs" Component={() => <Jobs />} />

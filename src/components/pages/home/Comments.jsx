@@ -1,27 +1,40 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Button, Form, Modal, Container, Row } from "react-bootstrap";
+import { setCommentArray } from "../../../redux/actions";
+import { setComments } from "../../../redux/actions";
 
-function Comments({ postId, handleCloseComments, setComments }) {
-  const [newComment, setNewComment] = useState({ comment: "", rate: 2, elementId: postId });
+function Comments({ comments, open, onHide, id, setComments }) {
+  const [commentText, setCommentText] = useState("");
 
- const postComment = async (e) => {
+  const postComment = async (e) => {
     e.preventDefault();
+    const newComment = {
+      comment: commentText,
+      rate: 3,
+      elementId: id,
+    };
     try {
-      const response = await fetch("https://striveschool-api.herokuapp.com/api/comments", {
-        method: "POST",
-        body: JSON.stringify(newComment),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
-        },
-      });
-  
+      const response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/comments",
+        {
+          method: "POST",
+          body: JSON.stringify(newComment),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
+          },
+        }
+      );
+
       if (response.ok) {
-        const newCommentData = await response.json();
-        setComments((prevComments) => [...prevComments, newCommentData]);
-        alert("Comment was sent to the shadow realm!");
-        handleCloseComments();
+        const data = await response.json()
+    
+        Object.assign(newComment, {...newComment, key:data._id})
+        setComments([...comments, newComment]);
+        console.log(newComment)
       } else {
         console.log("Error");
       }
@@ -29,10 +42,9 @@ function Comments({ postId, handleCloseComments, setComments }) {
       console.log(error);
     }
   };
-  
 
   return (
-    <Modal show={true} onHide={handleCloseComments}>
+    <Modal show={open} onHide={() => onHide(false)}>
       {/* Modal per la gestione dei commenti */}
       <Modal.Header closeButton>
         <span>Comments</span>
@@ -51,13 +63,7 @@ function Comments({ postId, handleCloseComments, setComments }) {
                     width: "46vh",
                     marginBottom: "5px",
                   }}
-                  value={newComment.comment}
-                  onChange={(e) =>
-                    setNewComment({
-                      ...newComment,
-                      comment: e.currentTarget.value,
-                    })
-                  }
+                  onChange={(e) => setCommentText(e.target.value)}
                 />
               </Form.Group>
               <div className="d-flex">
@@ -74,7 +80,7 @@ function Comments({ postId, handleCloseComments, setComments }) {
       <Button
         variant="outline-danger"
         className="mx-5 mb-2"
-        onClick={handleCloseComments}
+        onClick={() => onHide(false)}
       >
         Chiudi
       </Button>
