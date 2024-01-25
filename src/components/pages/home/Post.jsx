@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SinglePost from "./SinglePost/SinglePost";
+import {Row, Col, Button} from "react-bootstrap"
 
 function Post() {
   const dispatch = useDispatch();

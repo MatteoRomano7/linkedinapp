@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { BiCommentDetail, BiShare, BiEdit } from "react-icons/bi";
 import { FiThumbsUp } from "react-icons/fi";
-import { FaTimes, FaTruckMonster } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import CommentArea from "../CommentArea/CommentArea";
 
