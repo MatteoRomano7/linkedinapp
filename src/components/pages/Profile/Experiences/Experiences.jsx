@@ -12,6 +12,8 @@ import {
   Button,
 } from "react-bootstrap"
 
+import { Buildings } from "react-bootstrap-icons"
+
 
 const Experiences = ({}) => {
   const [showModal, setShowModal] = useState(false);
@@ -147,7 +149,7 @@ const Experiences = ({}) => {
             key={experience._id}
             className={`${styles.content} border rounded`}
           >
-            <img src="url_dell_immagine" alt="Esperienza" />
+            <Buildings size={"50"}/>
             <div className={styles.text}>
               <p>{experience.role}</p>
               <p>{experience.description}</p>
