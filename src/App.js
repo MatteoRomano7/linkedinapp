@@ -6,21 +6,22 @@ import Profile from "./components/pages/Profile/Profile";
 import Home from "./components/pages/home/Home.jsx";
 import Jobs from "./components/pages/Jobs/Jobs.jsx";
 import MyFooter from "./components/MyFooter/MyFooter.jsx";
+import LoginPage from "./components/pages/Login.jsx";
 
 function App() {
-
-
   return (
     <BrowserRouter>
       <div className="global-wrapper">
         <Navbar />
-        <Routes>
-          <Route path="/" Component={() => <Home />} />
-          <Route path="/profile/:user" Component={() => <Profile />} />
-          <Route path="/jobs" Component={() => <Jobs />} />
-          <Route path="/jobs/:searchQuery" Component={() => <Jobs />} />
 
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/profile/:user" element={<Profile />} />
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs/:searchQuery" element={<Jobs />} />
         </Routes>
+
         <MyFooter />
       </div>
     </BrowserRouter>

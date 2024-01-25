@@ -1,38 +1,48 @@
-import React, { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import "bootstrap/dist/css/bootstrap.min.css"
-import "./Profile.css"
-import People from "./People/People"
-import { Container } from "react-bootstrap"
-import Analytics from "./Analytics/Analytics"
-import Activity from "./Activity/Activity"
-import Resources from "./Resources/Resources"
-import Training from "./Training/Training"
-import Interests from "./Interests/Interests"
-import Language from "./Language/Langugage"
-import Hiring from "../hiring/Hiring"
-import Experiences from "./Experiences/Experiences"
-import Header from "./Header/Header"
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProfile } from "../../../redux/actions";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Profile.css";
+/* import People from "./People/People"; */
+import { Container } from "react-bootstrap";
+import Analytics from "./Analytics/Analytics";
+import Activity from "./Activity/Activity";
+import Resources from "./Resources/Resources";
+import Training from "./Training/Training";
+import Interests from "./Interests/Interests";
+import Hiring from "../hiring/Hiring";
+import Experiences from "./Experiences/Experiences";
+import Header from "./Header/Header";
+import Language from "./Language/Langugage";
 
 function Profile() {
-  const [users, setUsers] = useState(null)
+  const dispatch = useDispatch();
+  const userToken = useSelector((state) => state.token);
+  const [users, setUsers] = useState(null);
 
   useEffect(() => {
-    fetch("https://striveschool-api.herokuapp.com/api/profile/", {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data)
-      })
-      .catch((error) => {
-        console.error("Error in Data Retrieval:", error)
-      })
-  }, [])
+    console.log("Token from Redux:", userToken);
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        });
 
+        if (response.ok) {
+          const data = await response.json();
+          setUsers(data);
+        } else {
+          console.error("Error in Data Retrieval:", response.status);
+        }
+      } catch (error) {
+        console.error("Error in Data Retrieval:", error);
+      }
+    };
+
+    fetchData();
+  }, [userToken]);
   return (
     <Container className="content-wrapper">
       <div className="profile-main">
@@ -47,7 +57,7 @@ function Profile() {
       </div>
       <div className="profile-sidebar">
         <Language />
-        <People users={users} />
+        {/* <People users={users} /> */}
       </div>
     </Container>
   );
