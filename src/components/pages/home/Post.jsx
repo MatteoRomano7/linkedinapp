@@ -1,37 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProfile } from "../../../redux/actions/index";
-import { Card, Col, Row, Button } from "react-bootstrap";
-import { FiThumbsUp } from "react-icons/fi";
-import { BiCommentDetail, BiShare, BiEdit } from "react-icons/bi";
-import { FaTimes } from "react-icons/fa";
-import PostEdit from "./PostEdit";
-import Comments from "./Comments";
 import SinglePost from "./SinglePost/SinglePost";
 
 function Post() {
   const dispatch = useDispatch();
-  const authenticatedUserId = useSelector((state) => state.profile?._id);
-  const [comments, setComments] = useState([]);
-  const [posts2, setPosts2] = useState([]);
   const [showed, setShowed] = useState(5);
-  const [selectedPostId, setSelectedPostId] = useState(null);
-  const [showPostEdit, setShowPostEdit] = useState(false);
-  const [editedPostText, setEditedPostText] = useState("");
-  const [selectedCommentPostId, setSelectedCommentPostId] = useState(null);
-  const [selectedEditPostId, setSelectedEditPostId] = useState(null);
 
-  let posts = useSelector(state => state.posts)
-  let weh = posts.slice(0, showed)
-
-  useEffect(() => {
-    weh = posts.slice(0, showed)
-  }, [posts])
-
-
-  useEffect(() => {
-    dispatch(fetchProfile());
-  }, [dispatch]);
+  let posts = useSelector((state) => state.posts);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -51,8 +26,7 @@ function Post() {
           const sortedPosts = data.sort(
             (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
           );
-          dispatch({type: "FETCH_POSTS", payload: sortedPosts})
-          // setPosts(sortedPosts);
+          dispatch({ type: "FETCH_POSTS", payload: sortedPosts });
         } else {
           console.log("Error fetching posts");
         }
@@ -63,34 +37,6 @@ function Post() {
 
     fetchPosts();
   }, []);
-
-  const handleShowComments = (postId) => {
-    setSelectedCommentPostId(postId);
-  };
-
-  const handleCloseComments = () => {
-    setSelectedCommentPostId(null);
-  };
-
-  const handleShowPostEdit = (postId, postText) => {
-    setSelectedEditPostId(postId);
-    setEditedPostText(postText);
-    setShowPostEdit(true);
-  };
-
-  const handleClosePostEdit = () => {
-    setSelectedPostId(null);
-    setEditedPostText("");
-    setShowPostEdit(false);
-  };
-
-  // const handlePostEdit = (updatedText) => {
-  //   const updatedPosts = posts.map((post) =>
-  //     post._id === selectedPostId ? { ...post, text: updatedText } : post
-  //   );
-  //   setPosts(updatedPosts);
-  //   handleClosePostEdit();
-  // };
 
   const showMore = () => {
     setShowed((prevValue) => prevValue + 5);
@@ -106,8 +52,16 @@ function Post() {
     <div>
       <Row className="d-flex justify-content-center">
         <Col xs={6} style={{ width: "700px", maxWidth: "100%" }}>
-          {weh.map((post) => {
-            return <SinglePost key={post._id} id={post._id} post={post} postArray={posts} setPostArray={"setPosts"}/>;
+          {posts.slice(0, showed).map((post) => {
+            return (
+              <SinglePost
+                key={post._id}
+                id={post._id}
+                post={post}
+                postArray={posts}
+                setPostArray={"setPosts"}
+              />
+            );
           })}
         </Col>
       </Row>
