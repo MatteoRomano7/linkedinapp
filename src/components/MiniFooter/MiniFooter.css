@@ -11,10 +11,15 @@
 
 a {
   font-weight: 500;
-  color: black;
+  color: darkgrey;
   text-decoration: none;
 }
 
+a:hover {
+  color: black;
+  cursor: pointer;
+}
 .miniFooterDropdown {
   font-weight: 500 !important;
+  color: darkgrey;
 }
