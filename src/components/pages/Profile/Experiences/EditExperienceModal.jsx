@@ -1,26 +1,33 @@
-import React, { useState } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import React, { useState } from "react"
+import { Modal, Button, Form } from "react-bootstrap"
+import { Trash } from "react-bootstrap-icons"
 
-const EditExperienceModal = ({ isOpen, onRequestClose, experience, onSubmit, onDelete }) => {
-  const [editedExperience, setEditedExperience] = useState({ ...experience });
+const EditExperienceModal = ({
+  isOpen,
+  onRequestClose,
+  experience,
+  onSubmit,
+  onDelete,
+}) => {
+  const [editedExperience, setEditedExperience] = useState({ ...experience })
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setEditedExperience({
       ...editedExperience,
       [name]: value,
-    });
-  };
+    })
+  }
 
   const handleSubmit = () => {
-    onSubmit(editedExperience);
-    onRequestClose();
-  };
+    onSubmit(editedExperience)
+    onRequestClose()
+  }
 
   const handleDelete = () => {
-    onDelete();
-    onRequestClose();
-  };
+    onDelete()
+    onRequestClose()
+  }
 
   return (
     <Modal show={isOpen} onHide={onRequestClose}>
@@ -79,7 +86,7 @@ const EditExperienceModal = ({ isOpen, onRequestClose, experience, onSubmit, onD
         </Button>
       </Modal.Footer>
     </Modal>
-  );
-};
+  )
+}
 
-export default EditExperienceModal;
+export default EditExperienceModal
