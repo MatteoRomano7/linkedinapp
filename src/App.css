@@ -43,3 +43,8 @@
 .global-wrapper {
   background-color: #F4F2EE
 }
+
+
+.pointer {
+  cursor: pointer;
+}

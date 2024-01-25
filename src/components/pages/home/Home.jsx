@@ -16,7 +16,6 @@ function Home() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProfile());
-    console.log("fetch");
   }, []);
 
   return (
