@@ -8,3 +8,13 @@
 .signatureLogo img {
   width: 100px;
 }
+
+a {
+  font-weight: 500;
+  color: black;
+  text-decoration: none;
+}
+
+.miniFooterDropdown {
+  font-weight: 500 !important;
+}
