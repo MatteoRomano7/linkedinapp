@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Card, Modal, Button, Col, Row, Container } from "react-bootstrap";
 import { FcClapperboard, FcPicture, FcPlanner, FcViewDetails } from "react-icons/fc";
 import { useSelector, useDispatch } from 'react-redux';
+import "./NewPost.css"
 
 const NewPost = () => {
   const profilo = useSelector(state => state.profile)
@@ -9,36 +10,7 @@ const NewPost = () => {
   const [newPost, setNewPost] = useState({ text: "" });
   const [imageFile, setImageFile] = useState(null);
   const dispatch = useDispatch()
-  const postss = useSelector(state => state.posts)
-
-/*   useEffect(() => {
-    fetchProfileImage();
-  }, []);
- */
-/*   const fetchProfileImage = async () => {
-    try {
-      const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
-        headers: {
-          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
-        },
-      });
-  
-      if (response.ok) {
-        const profileData = await response.json();
-  
-        if (profileData && profileData.image) {
-          setProfileImage(profileData.image);
-        } else {
-          console.error("Image not available in profile data");
-        }
-      } else {
-        console.error("Error fetching profile image");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }; */
-  
+  const postss = useSelector(state => state.posts)  
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
