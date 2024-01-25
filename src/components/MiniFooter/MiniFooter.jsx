@@ -8,7 +8,7 @@ const MiniFooter = () => {
     <>
       <div className="d-flex  justify-content-center mt-5">
         <a className="mx-2">Informazioni</a>
-        <a>Accessibilità</a>
+        <a className="mx-2">Accessibilità</a>
       </div>
 
       <div className="d-flex  justify-content-center">
@@ -35,7 +35,7 @@ const MiniFooter = () => {
       </div>
 
       <div className="d-flex justify-content-center">
-        <a className="">Opzioni per gli annunci</a>
+        <a className="mx-2">Opzioni per gli annunci</a>
       </div>
 
       <div className="d-flex justify-content-center">
