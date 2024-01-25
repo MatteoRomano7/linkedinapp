@@ -13,6 +13,7 @@ import {
   Button,
 } from "react-bootstrap"
 import { Buildings } from "react-bootstrap-icons"
+import { Modal } from "react-bootstrap"
 
 const Experiences = ({}) => {
   const [showModal, setShowModal] = useState(false)
@@ -27,6 +28,7 @@ const Experiences = ({}) => {
   })
   const [editExperienceId, setEditExperienceId] = useState("")
   const [editModalShow, setEditModalShow] = useState(false)
+  const [selectedExperience, setSelectedExperience] = useState(null)
 
   const handleEditModalClose = () => {
     setEditModalShow(false)
@@ -117,6 +119,11 @@ const Experiences = ({}) => {
     }
   }
 
+  const handleExperienceClick = (experience) => {
+    setSelectedExperience(experience);
+    setShowModal(true);
+  };
+
   return (
     <div className="border rounded bg-white p-2">
       <div className={styles.header}></div>
@@ -148,8 +155,13 @@ const Experiences = ({}) => {
             key={experience._id}
             className={`${styles.content} border rounded`}
           >
-            <Buildings size={"50"}/>
-            <div className={styles.text}>
+            <Buildings size={"50"} 
+                       onClick={() => handleExperienceClick(experience)}
+                       cursor={"pointer"}
+            />
+            <div className={styles.text}
+            onClick={() => handleExperienceClick(experience)}
+            >
               <p>{experience.role}</p>
               <p>{experience.description}</p>
             </div>
@@ -195,6 +207,26 @@ const Experiences = ({}) => {
           />
         )}
       </Dropdown>
+      {selectedExperience && (
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Dettagli dell'esperienza</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p><strong>Ruolo:</strong> {selectedExperience.role}</p>
+            <p><strong>Azienda:</strong> {selectedExperience.company}</p>
+            <p><strong>Data di inizio:</strong> {selectedExperience.startDate}</p>
+            <p><strong>Data di fine:</strong> {selectedExperience.endDate || "In corso"}</p>
+            <p><strong>Descrizione:</strong> {selectedExperience.description}</p>
+            <p><strong>Zona:</strong> {selectedExperience.area}</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowModal(false)}>
+              Chiudi
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
     </div>
   )
 }
