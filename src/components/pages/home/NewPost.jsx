@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Form, Card, Modal, Button, Col, Row, Container } from "react-bootstrap";
 import { FcClapperboard, FcPicture, FcPlanner, FcViewDetails } from "react-icons/fc";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const NewPost = () => {
   const profilo = useSelector(state => state.profile)
   const [show, setShow] = useState(false);
   const [newPost, setNewPost] = useState({ text: "" });
   const [imageFile, setImageFile] = useState(null);
+  const dispatch = useDispatch()
+  const postss = useSelector(state => state.posts)
 
 /*   useEffect(() => {
     fetchProfileImage();
@@ -74,6 +76,7 @@ const NewPost = () => {
           });
         }
 
+        dispatch({type: "SET_POSTS", payload: newPostJson})
         setNewPost({ text: "" });
         setImageFile(null);
         handleClose();
