@@ -13,24 +13,27 @@ import Language from "./Language/Langugage"
 import Hiring from "../hiring/Hiring"
 import Experiences from "./Experiences/Experiences"
 import Header from "./Header/Header"
+import data from "../../../data/profiles.json"
 
 function Profile() {
   const [users, setUsers] = useState(null)
 
   useEffect(() => {
-    fetch("https://striveschool-api.herokuapp.com/api/profile/", {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data)
-      })
-      .catch((error) => {
-        console.error("Error in Data Retrieval:", error)
-      })
+    setUsers(data)
+    // fetch("https://striveschool-api.herokuapp.com/api/profile/", {
+    //   headers: {
+    //     Authorization:
+    //       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
+    //   },
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setUsers(data)
+    //     console.log(data)
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error in Data Retrieval:", error)
+    //   })
   }, [])
 
   return (

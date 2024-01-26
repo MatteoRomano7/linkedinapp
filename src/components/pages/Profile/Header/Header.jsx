@@ -16,7 +16,6 @@ function Header() {
 
   useEffect(() => {
     dispatch(fetchProfile());
-    console.log("fetch");
   }, []);
 
   return (

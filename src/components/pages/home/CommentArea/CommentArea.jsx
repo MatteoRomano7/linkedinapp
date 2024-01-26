@@ -9,7 +9,6 @@ function CommentArea({ commentData, setCommentData, post, id }) {
   const [comments, setComments] = useState([]);
   const [commentShow, setCommentShow] = useState(false);
 
-  console.log(commentShow);
 
   useEffect(() => {
     fetch(
@@ -22,12 +21,10 @@ function CommentArea({ commentData, setCommentData, post, id }) {
   return (
     <div>
       <Card className="mb-3">
-        <Card.Body>
-          <div>
-            <Button onClick={() => setCommentShow(!commentShow)}>
+        <Card.Body className="text-center">
+            <button type="button" onClick={() => setCommentShow(!commentShow)} className="btn btn-outline-success">
               Aggiungi un commento
-            </Button>
-          </div>
+            </button>
         </Card.Body>
       </Card>
       <div>

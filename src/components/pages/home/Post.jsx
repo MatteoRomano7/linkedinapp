@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SinglePost from "./SinglePost/SinglePost";
 import { Row, Col, Button } from "react-bootstrap";
+import "./Post.css"
 
 function Post() {
   const dispatch = useDispatch();
@@ -50,9 +51,9 @@ function Post() {
   };
 
   return (
-    <div>
+    <div className="home-center-elem">
       <Row className="d-flex justify-content-center">
-        <Col xs={6} style={{ width: "700px", maxWidth: "100%" }}>
+        <Col>
           {posts.slice(0, showed).map((post) => {
             return (
               <SinglePost

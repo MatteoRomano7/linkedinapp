@@ -5,7 +5,7 @@ import "./MiniFooter.css"
 
 const MiniFooter = () => {
   return (
-    <>
+    <div className="mini-footer">
       <div className="d-flex  justify-content-center mt-5">
         <a className="mx-2">Informazioni</a>
         <a className="mx-2">Accessibilità</a>
@@ -74,7 +74,7 @@ const MiniFooter = () => {
           LinkedIn Corporation &copy; 2024
         </address>
       </div>
-    </>
+    </ div>
   )
 }
 
