@@ -2,7 +2,7 @@ import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Container, Dropdown } from "react-bootstrap"
 import "./MiniFooter.css"
-import imgLinkedin from '../MiniFooter/linkedin_logo_footer.png';
+import imgLinkedin from "../MiniFooter/linkedin_logo_footer.png"
 
 const MiniFooter = () => {
   return (
@@ -13,7 +13,7 @@ const MiniFooter = () => {
       </div>
 
       <div className="d-flex  justify-content-center">
-        <a className="mt-2">Centro assistenza</a>
+        <a className="mt-2">Assistenza</a>
         <div className="">
           <Dropdown>
             <Dropdown.Toggle
@@ -69,13 +69,13 @@ const MiniFooter = () => {
 
       <div className="d-flex justify-content-center mt-3 signatureLogo ">
         <div className="">
-          <img src={imgLinkedin} alt="LinkedIn Logo"/>
+          <img src={imgLinkedin} alt="LinkedIn Logo" />
         </div>
         <address className="FooterGrassseto mt-1">
           LinkedIn Corporation &copy; 2024
         </address>
       </div>
-    </ div>
+    </div>
   )
 }
 
