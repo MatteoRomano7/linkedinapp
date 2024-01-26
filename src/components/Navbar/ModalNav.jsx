@@ -65,7 +65,7 @@ const ModalNav = () => {
                 Account per la pubblicizzazione
               </Link>
               <br />
-              <Link to="#" className="LinkModale">
+              <Link to="/Login" className="LinkModale">
                 Esci
               </Link>
             </Col>
