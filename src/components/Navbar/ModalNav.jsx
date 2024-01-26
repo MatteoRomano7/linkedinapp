@@ -42,30 +42,30 @@ const ModalNav = () => {
           <Row>
             <Col>
               <h4>Account</h4>
-              <Link to="#" >
+              <Link to="#" className="LinkModale">
                 Impostazioni e privacy
               </Link>
               <br />
-              <Link to="#" >
+              <Link to="#" className="LinkModale">
                 Guida
               </Link>
               <br />
-              <Link to="#" >
+              <Link to="#" className="LinkModale">
                 Lingua
               </Link>
             </Col>
 
             <Col>
               <h4>Gestisci</h4>
-              <Link to="#" >
+              <Link to="#" className="LinkModale">
                 Post e attività
               </Link>
               <br />
-              <Link to="#" >
+              <Link to="#" className="LinkModale">
                 Account per la pubblicizzazione
               </Link>
               <br />
-              <Link to="#" >
+              <Link to="#" className="LinkModale">
                 Esci
               </Link>
             </Col>
