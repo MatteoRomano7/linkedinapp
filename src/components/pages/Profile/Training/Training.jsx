@@ -1,6 +1,13 @@
 import { Plus, Pencil } from "react-bootstrap-icons"
+import { useSelector } from "react-redux";
+import './Training.css';
+import imgFormazione from "./0x0.png";
+
+
 
 const Training = () =>{
+/*     const profilo = useSelector((state) => state.profile);
+ */
     return (
         <div className="section border rounded p-2">
             <div className="d-flex justify-content-between">
@@ -12,11 +19,11 @@ const Training = () =>{
 
             </div>
             <div className="d-flex">
-                <img src="" alt="" /> <p className="m-1">QMF</p>
+                <img  src={imgFormazione} className="fotoTonde"/>
             
-            <div>
-            <p>EPICODE</p>
-            <span>2023-2024</span>
+            <div className="ms-2">
+            <p className="m-0 fw-bold">EPICODE SCHOOL</p>
+            <span className="fs-6">2023-2024</span>
             </div>
             </div>
         </div>

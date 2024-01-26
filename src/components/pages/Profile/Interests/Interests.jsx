@@ -1,21 +1,26 @@
+import { useSelector } from "react-redux";
+import './Interests.css';
+
 
 const Interests = () => {
+    const profilo = useSelector((state) => state.profile);
     return (
         <div className="section border rounded p-2">
             <div>
                 <h3>Interessi</h3>
-                <p>Aziende</p>
+                <p className="Aziende">Aziende</p>
             </div>
+            <hr />
             <div className="d-flex">
-                <img src="" alt="" /><p>QMF</p>
+            <img className="fotoTonde" src={profilo.image}/>
                 <div>
-                    <p>LinkedIn Notizie</p>
+                    <p className="m-0 ms-2 fw-bold">LinkedIn Notizie</p>
 
-                    <span>731494 follower</span>
+                    <span className="m-2">{Math.round(Math.random() * 1000000)} follower</span>
                 </div>
             </div>
-            <div className="m-3">
-                <button >Giá segui</button>
+            <div className="ms-5 ps-2 mt-2">
+                <button className="outlined-button">Giá segui</button>
             </div>
         </div>
     )

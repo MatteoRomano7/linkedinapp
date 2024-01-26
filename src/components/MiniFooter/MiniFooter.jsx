@@ -2,6 +2,7 @@ import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Container, Dropdown } from "react-bootstrap"
 import "./MiniFooter.css"
+import imgLinkedin from '../MiniFooter/linkedin_logo_footer.png';
 
 const MiniFooter = () => {
   return (
@@ -68,7 +69,7 @@ const MiniFooter = () => {
 
       <div className="d-flex justify-content-center mt-3 signatureLogo ">
         <div className="">
-          <img src={"img/linkedin_logo_footer.png"} alt="LinkedIn Logo" />
+          <img src={imgLinkedin} alt="LinkedIn Logo"/>
         </div>
         <address className="FooterGrassseto mt-1">
           LinkedIn Corporation &copy; 2024
