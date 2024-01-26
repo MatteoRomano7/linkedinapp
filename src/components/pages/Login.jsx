@@ -1,51 +1,52 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { loginAction } from "../../redux/actions";
-import { useNavigate } from "react-router-dom";
-import { Row, Col, Form, Button } from "react-bootstrap";
-import { fetchProfile } from "../../redux/actions";
+import React, { useState } from "react"
+import { useDispatch } from "react-redux"
+import { loginAction } from "../../redux/actions"
+import { useNavigate } from "react-router-dom"
+import { Row, Col, Form, Button } from "react-bootstrap"
+import { fetchProfile } from "../../redux/actions"
+import linkedinLogo from "../MiniFooter/linkedin_logo_footer.png"
 
 function LoginPage() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [token, setToken] = useState("");
-  const [userId, setUserId] = useState("");
-  const [isLoginDisabled, setLoginDisabled] = useState(true);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [token, setToken] = useState("")
+  const [userId, setUserId] = useState("")
+  const [isLoginDisabled, setLoginDisabled] = useState(true)
 
   const handleLogin = () => {
-    dispatch(loginAction({ token, userId }));
-    dispatch(fetchProfile());
-    localStorage.setItem("token", token);
-    localStorage.setItem("userId", userId);
-    navigate("/");
-  };
+    dispatch(loginAction({ token, userId }))
+    dispatch(fetchProfile())
+    localStorage.setItem("token", token)
+    localStorage.setItem("userId", userId)
+    navigate("/")
+  }
 
   const handleTestLogin = () => {
     const testToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWIyOWJmYjMxYTczZjAwMTlkNWM0NTUiLCJpYXQiOjE3MDYyMDQxNTUsImV4cCI6MTcwNzQxMzc1NX0.9uyOU7pnSY-_IF4wvYbKIK5WDnYXoZTKox832J6ujwA";
-    const testUserId = "65b29bfb31a73f0019d5c455";
-    localStorage.setItem("token", testToken);
-    localStorage.setItem("userId", testUserId);
-    dispatch(loginAction({ token: testToken, userId: testUserId }));
-    dispatch(fetchProfile());
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWIyOWJmYjMxYTczZjAwMTlkNWM0NTUiLCJpYXQiOjE3MDYyMDQxNTUsImV4cCI6MTcwNzQxMzc1NX0.9uyOU7pnSY-_IF4wvYbKIK5WDnYXoZTKox832J6ujwA"
+    const testUserId = "65b29bfb31a73f0019d5c455"
+    localStorage.setItem("token", testToken)
+    localStorage.setItem("userId", testUserId)
+    dispatch(loginAction({ token: testToken, userId: testUserId }))
+    dispatch(fetchProfile())
 
-    navigate("/");
-  };
+    navigate("/")
+  }
 
   const handleTokenChange = (e) => {
-    setToken(e.target.value);
-    updateLoginButtonState(e.target.value, userId);
-  };
+    setToken(e.target.value)
+    updateLoginButtonState(e.target.value, userId)
+  }
 
   const handleUserIdChange = (e) => {
-    setUserId(e.target.value);
-    updateLoginButtonState(token, e.target.value);
-  };
+    setUserId(e.target.value)
+    updateLoginButtonState(token, e.target.value)
+  }
 
   const updateLoginButtonState = (newToken, newUserId) => {
-    const isDisabled = !newToken || !newUserId;
-    setLoginDisabled(isDisabled);
-  };
+    const isDisabled = !newToken || !newUserId
+    setLoginDisabled(isDisabled)
+  }
 
   return (
     <div>
@@ -53,7 +54,7 @@ function LoginPage() {
         <Col md={4}>
           <nav className="navbar navbar-light bg-light">
             <a className="navbar-brand">
-              <img src="./linkedin_logo.png" alt="LinkedIn Logo" />
+              <img src={linkedinLogo} alt="LinkedIn Logo" />
             </a>
           </nav>
 
@@ -104,7 +105,7 @@ function LoginPage() {
         </Col>
       </Row>
     </div>
-  );
+  )
 }
 
-export default LoginPage;
+export default LoginPage
