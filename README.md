@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+# LinkedIn もどき
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Getting Started
 
-## Available Scripts
+First of all, login on the app using the provided default profile, or alternatively, if you're registered on the [strive-school API](https://strive.school/linkedin-registration), you can use the bearer token to use our services.
+This application needs to be ran in Visual Studio Code by writing "npm start" in the terminal after cloning the repository. This will automatically assign a port and run the application in localhost.
 
-In the project directory, you can run:
+# Technology
 
-### `npm start`
+This project was created using the React library, create-react-app blueprint, [React-redux](https://react-redux.js.org/), [React-router-dom](https://reactrouter.com/en/main), and [React-bootstrap](https://react-bootstrap.netlify.app/) libraries.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Functionality
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Unfortunately, not all the official LinkedIn functionality is reproduced in this project, but the user is able to modify their profile, create posts, write comments, search for jobs by keyword or company, and upload images, all using the strive-school APIs. As the APIs used are free and have a limited number of calls-per-minute, and this project does not include caching, we encourage the users to not attempt to repeatedly make API calls, for example by continuously refreshing the home page.
 
-### `npm test`
+# Project structure & philosophy
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The core idea behind this project's structure is the single page application format with react-router, involving usage of heavy code splitting, with separate folders including the React component and its own css file for styling. This was extremely helpful during development to avoid conflicts and maximize efficiency of code writing.
+The styling was mostly done using the react-bootstrap library, with touches of manual CSS for layouts and various components that were more convenient to style in that manner.
+React-redux was used to allow the user to freely navigate the application while maintaining information about the user in its store.
 
-### `npm run build`
+# Credits
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project was a creation of love by Matteo Romano, Fabrizio d'Alessandro, Gabriele Delfrate Alvazzi, Gianluigi Aloe, Marco Guerrieri, and Andrea Buzzanca and made in about five days. We would also like to thank all the teachers and staff at [EPICODE](https://epicode.com/) for giving us the opportunity to become web developers.

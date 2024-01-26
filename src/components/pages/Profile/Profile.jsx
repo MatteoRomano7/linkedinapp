@@ -14,6 +14,7 @@ import Hiring from "../hiring/Hiring";
 import Experiences from "./Experiences/Experiences";
 import Header from "./Header/Header";
 import Language from "./Language/Langugage";
+import data from "../../../data/profiles.json"
 
 function Profile() {
   const dispatch = useDispatch();

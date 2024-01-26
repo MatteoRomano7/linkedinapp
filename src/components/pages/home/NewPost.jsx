@@ -1,42 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { Form, Card, Modal, Button, Col, Row, Container } from "react-bootstrap";
-import { FcClapperboard, FcPicture, FcPlanner, FcViewDetails } from "react-icons/fc";
-import { useSelector } from 'react-redux';
+import React, { useState } from "react";
+import {
+  Form,
+  Card,
+  Modal,
+  Button,
+  Col,
+  Row,
+  Container,
+} from "react-bootstrap";
+import {
+  FcClapperboard,
+  FcPicture,
+  FcPlanner,
+  FcViewDetails,
+} from "react-icons/fc";
+import { useSelector, useDispatch } from "react-redux";
+import "./NewPost.css";
 
 const NewPost = () => {
-  const profilo = useSelector(state => state.profile)
+  const profilo = useSelector((state) => state.profile);
   const [show, setShow] = useState(false);
   const [newPost, setNewPost] = useState({ text: "" });
   const [imageFile, setImageFile] = useState(null);
-
-/*   useEffect(() => {
-    fetchProfileImage();
-  }, []);
- */
-/*   const fetchProfileImage = async () => {
-    try {
-      const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
-        headers: {
-          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
-        },
-      });
-  
-      if (response.ok) {
-        const profileData = await response.json();
-  
-        if (profileData && profileData.image) {
-          setProfileImage(profileData.image);
-        } else {
-          console.error("Image not available in profile data");
-        }
-      } else {
-        console.error("Error fetching profile image");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }; */
-  
+  const dispatch = useDispatch();
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -49,14 +35,18 @@ const NewPost = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
-        },
-        body: JSON.stringify(newPost),
-      });
+      const response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/posts/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
+          },
+          body: JSON.stringify(newPost),
+        }
+      );
 
       if (response.ok) {
         const newPostJson = await response.json();
@@ -65,15 +55,20 @@ const NewPost = () => {
           const formData = new FormData();
           formData.append("post", imageFile);
 
-          await fetch(`https://striveschool-api.herokuapp.com/api/posts/${newPostJson._id}`, {
-            method: "POST",
-            body: formData,
-            headers: {
-              Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
-            },
-          });
+          await fetch(
+            `https://striveschool-api.herokuapp.com/api/posts/${newPostJson._id}`,
+            {
+              method: "POST",
+              body: formData,
+              headers: {
+                Authorization:
+                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
+              },
+            }
+          );
         }
 
+        // dispatch({ type: "SET_POSTS", payload: newPostJson });
         setNewPost({ text: "" });
         setImageFile(null);
         handleClose();
@@ -89,31 +84,35 @@ const NewPost = () => {
     <>
       <Card>
         <Card.Body>
-          <Row className="d-flex">
+          <Row className="d-flex align-items-center">
             <Col xs={2}>
               <Card.Img src={profilo.image} alt="foto" className="fotoTonda" />
             </Col>
             <Col xs={10}>
               <Form className="my-4">
-                <Form.Control type="search" placeholder="Scrivi un post..." onClick={handleShow} />
+                <Form.Control
+                  type="search"
+                  placeholder="Scrivi un post..."
+                  onClick={handleShow}
+                />
               </Form>
             </Col>
           </Row>
         </Card.Body>
         <Row className="text-muted justify-content-center flex-nowrap">
-        <Col
+          <Col
             xs={3}
             className="d-flex align-items-center justify-content-center p-2 rounded"
           >
-            <div className="mb-0 ml-2 text-primary">
+            <div className="mb-0 ml-2 text-primary pointer">
               <FcPicture size={26} /> Foto
             </div>
           </Col>
           <Col
             xs={3}
-            className="d-flex align-items-center justify-content-center p-2 rounded"
+            className="d-flex align-items-center justify-content-center p-2 rounded "
           >
-            <div className="mb-0 ml-2">
+            <div className="mb-0 ml-2 pointer">
               <FcClapperboard size={26} /> Video
             </div>
           </Col>
@@ -121,7 +120,7 @@ const NewPost = () => {
             xs={3}
             className="d-flex align-items-center justify-content-center p-2 rounded"
           >
-            <div className="mb-0 ml-2">
+            <div className="mb-0 ml-2 pointer">
               <FcPlanner size={26} /> Eventi
             </div>
           </Col>
@@ -129,14 +128,14 @@ const NewPost = () => {
             xs={3}
             className="d-flex align-items-center justify-content-center p-2 rounded"
           >
-            <div className="mb-0 ml-2">
+            <div className="mb-0 ml-2 pointer">
               <FcViewDetails size={26} /> Articolo
             </div>
           </Col>
         </Row>
       </Card>
       <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
+        <Modal.Header closeButton>
           <span>Crea un post</span>
         </Modal.Header>
         <Modal.Body className="show-grid">
@@ -144,25 +143,17 @@ const NewPost = () => {
             <Row>
               <Card.Body>
                 <div className="d-flex flex-row">
-                  <span className="d-flex flex-column ml-3">
-                    <Card.Text className="">
-                      Ciao, che testo vuoi postare?
-                    </Card.Text>
-                  </span>
+                  <span className="d-flex flex-column ml-3"></span>
                 </div>
               </Card.Body>
             </Row>
             <Row>
               <Form className="" onSubmit={createNewPost}>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
+                  <Form.Label>Che cosa vuoi postare?</Form.Label>
                   <Form.Control
                     as="textarea"
                     rows={5}
-                    style={{
-                      border: "transparent",
-                      width: "46vh",
-                      marginBottom: "5px",
-                    }}
                     value={newPost.text}
                     onChange={(e) =>
                       setNewPost({
@@ -170,10 +161,16 @@ const NewPost = () => {
                       })
                     }
                   />
-                  <input type="file" onChange={handleImageChange} />
+                  <Form.Control type="file" onChange={handleImageChange} className="mt-3" />
                 </Form.Group>
-                <div className="d-flex">
-                  <Button variant="outline-success" type="submit">
+                <hr />
+
+                <div className="d-flex justify-content-center">
+                  <Button
+                    variant="outline-success"
+                    type="submit"
+                    style={{ width: "160px" }}
+                  >
                     Pubblica
                   </Button>
                 </div>
@@ -181,13 +178,6 @@ const NewPost = () => {
             </Row>
           </Container>
         </Modal.Body>
-        <Button
-          variant="outline-danger"
-          className="mx-5 mb-2"
-          onClick={handleClose}
-        >
-          Chiudi
-        </Button>
       </Modal>
     </>
   );

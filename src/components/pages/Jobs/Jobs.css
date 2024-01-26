@@ -4,8 +4,10 @@
     justify-content: space-between;
     gap: 1rem;
     margin-top: 1rem;
+    width: 100%;
 }
 
-.jobs-center-element {
-    width: 600px;
-}
+/* .jobs-center-element {
+    width: 100px;
+    flex-grow: 1;
+} */

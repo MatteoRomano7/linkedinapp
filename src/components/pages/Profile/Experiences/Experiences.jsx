@@ -5,7 +5,6 @@ import AddExperienceModal from "./AddExperiencesModal"
 import EditExperienceModal from "./EditExperienceModal"
 import * as Icon from "react-bootstrap-icons"
 import { useSelector } from "react-redux";
-
 import {
   Dropdown,
   DropdownItem,
@@ -129,7 +128,7 @@ const Experiences = ({}) => {
       <div className={styles.header}></div>
       <Dropdown>
         <div className="d-flex justify-content-between">
-          <p className={styles.experienceText}>Esperienza</p>
+          <h3 className={styles.experienceText}>Esperienza</h3>
 
           <DropdownToggle className="bg-transparent border-0">
             <PlusLg size={24} className={`${styles.plusIcon}`} />

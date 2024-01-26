@@ -1,6 +1,6 @@
 export const setProfile = "SET_PROFILE";
 export const setJobs = "SET_JOBS";
-export const Login = 'LOGIN';
+export const Login = 'LOGIN';;
 
 export const fetchProfile = () => {
   return (dispatch, getState) => {
@@ -17,15 +17,19 @@ export const fetchProfile = () => {
   };
 };
 
-export const fetchJobs= (query, category) => {
+export const fetchJobs = (query, category) => {
   return async (dispatch) => {
-    const res = await fetch(`https://strive-benchmark.herokuapp.com/api/jobs?${category}=${query}&limit=10`)
-    const data = await res.json()
-    console.log(data)
+    const res = await fetch(
+      `https://strive-benchmark.herokuapp.com/api/jobs?${category}=${query}&limit=10`
+    );
+    const data = await res.json();
+    console.log(data);
 
-    dispatch({type: setJobs, payload: data.data})
-  }
-}
+    dispatch({ type: setJobs, payload: data.data });
+  };
+};
+
+
 
 export const loginAction = (userData) => {
   return {

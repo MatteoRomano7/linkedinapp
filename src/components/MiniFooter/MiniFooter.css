@@ -6,5 +6,22 @@
 }
 
 .signatureLogo img {
-  width: 100px;
+  width: 75px;
+  margin-right: 10px;
 }
+
+.mini-footer a {
+  font-weight: 500;
+  color: darkgrey;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  cursor: pointer;
+}
+.miniFooterDropdown {
+  font-weight: 500 !important;
+  color: darkgrey;
+}
+

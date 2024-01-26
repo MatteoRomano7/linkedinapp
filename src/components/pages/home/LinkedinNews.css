@@ -1,0 +1,40 @@
+.newsContainer {
+  background-color: white;
+  line-height: 0.5;
+  min-width: 300px;
+  max-width: 300px;
+}
+
+.newsHeader {
+  font-size: 30px;
+  margin-left: 16px;
+  margin-top: 16px;
+}
+
+.articleTitle {
+  color: black;
+  font-weight: 700;
+  line-height: 1.3rem;
+  font-size: 1.1rem;
+}
+
+.newsDetail {
+  margin-top: 12px;
+  margin-bottom: 30px;
+}
+
+.showMore {
+  font-size: 20px;
+  color: darkgray;
+}
+
+
+@media screen and (max-width: 1400px) {
+  .newsContainer {
+    display: none;
+  }
+
+  .mini-footer {
+    display: none;
+  }
+}

@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { fetchJobs } from "../../redux/actions";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
+import ModalNav from "./ModalNav";
 import {
   Navbar,
   Nav,
@@ -17,6 +18,7 @@ import {
 import {
   Linkedin,
   HouseDoorFill,
+  PersonFill,
   PeopleFill,
   SuitClubFill,
   ChatRightDotsFill,
@@ -37,12 +39,11 @@ function MyNavbar() {
             <Linkedin size={32} className="logoLinkedin me-2" />
           </Link>
           <Form
-            inline
             className="tuam"
             onSubmit={(e) => {
               e.preventDefault();
               dispatch(fetchJobs(searchQuery, "search"));
-              navigate(`/jobs/${searchQuery}`, {replace: true})
+              navigate(`/jobs/${searchQuery}`, { replace: true })
             }}
           >
             <FormControl
@@ -91,7 +92,7 @@ function MyNavbar() {
 
               <Col>
                 <div className="navlink-item">
-                  <HouseDoorFill />
+                  <PersonFill />
 
                   <div>
                     <Dropdown className="mx-3 toAddBorder">
@@ -103,16 +104,11 @@ function MyNavbar() {
                         Tu
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
-                        <Link to="/profile/me" className="dropdown-item">
-                          Action
-                        </Link>
-
-                        <Dropdown.Item href="#/action-2">
-                          Another action
-                        </Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">
-                          Something else
-                        </Dropdown.Item>
+                        <Dropdown title="Tu">
+                          <Dropdown.Item>
+                            <ModalNav />
+                          </Dropdown.Item>
+                        </Dropdown>
                       </Dropdown.Menu>
                     </Dropdown>
                   </div>

@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchJobs } from "../../../../../redux/actions/index.js";
+import { fetchJobs } from "../../../../redux/actions/index.js";
 import { useNavigate } from "react-router-dom";
 
 function JobSearch() {
@@ -14,6 +14,7 @@ function JobSearch() {
 
   return (
     <Container className="border rounded jobform-container">
+      <h1 className="my-5">Cerca</h1>
       <Form className="job-form"
         onSubmit={(e) => {
           e.preventDefault();
