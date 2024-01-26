@@ -16,14 +16,14 @@ function LoginPage() {
     dispatch(loginAction({ token, userId }));
     localStorage.setItem('token', token); 
     localStorage.setItem('userId', userId); 
-    navigate("/home");
+    navigate("/");
   };
 
   const handleTestLogin = () => {
     const testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWIyOWJmYjMxYTczZjAwMTlkNWM0NTUiLCJpYXQiOjE3MDYyMDQxNTUsImV4cCI6MTcwNzQxMzc1NX0.9uyOU7pnSY-_IF4wvYbKIK5WDnYXoZTKox832J6ujwA";
     const testUserId = "65b29bfb31a73f0019d5c455";
     dispatch(loginAction({ token: testToken, userId: testUserId }));
-    navigate("/home");
+    navigate("/");
   };
 
   const handleTokenChange = (e) => {
@@ -47,7 +47,7 @@ function LoginPage() {
         <Col md={4}>
           <nav className="navbar navbar-light bg-light">
             <a className="navbar-brand" href="/">
-              <img src="/img/linkedin_logo_footer.png" alt="LinkedIn Logo" />
+              <img src="./linkedin_logo.png" alt="LinkedIn Logo" />
             </a>
           </nav>
 
