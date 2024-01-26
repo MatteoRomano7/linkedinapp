@@ -1,9 +1,8 @@
 const initialState = {
   profile: {},
-  jobs: {},
-   
+  jobs: {},   
   token: localStorage.getItem('token') || null, 
-  user: localStorage.getItem('userId') || null, 
+  user:  localStorage.getItem('userId') || null, 
 };
 
 const mainReducer = (state = initialState, action) => {
