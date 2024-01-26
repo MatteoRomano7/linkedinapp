@@ -1,6 +1,6 @@
 export const setProfile = "SET_PROFILE";
 export const setJobs = "SET_JOBS";
-export const Login = 'LOGIN';;
+export const Login = 'LOGIN';
 
 export const fetchProfile = () => {
   return (dispatch, getState) => {
@@ -28,6 +28,7 @@ export const fetchJobs = (query, category) => {
     dispatch({ type: setJobs, payload: data.data });
   };
 };
+
 
 
 

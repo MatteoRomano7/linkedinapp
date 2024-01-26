@@ -13,12 +13,7 @@ function App() {
     <BrowserRouter>
       <div className="global-wrapper">
         <Routes>
-          <Route 
-            path="/Login" 
-            Component={() => 
-                <LoginPage /> 
-            }
-         />
+          <Route path="/login" Component={() => <LoginPage />} />
           <Route
             path="/"
             Component={() => (

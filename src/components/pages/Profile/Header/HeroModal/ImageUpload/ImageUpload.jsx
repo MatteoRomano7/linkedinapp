@@ -1,10 +1,14 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "./ImageUpload.css"
+import "./ImageUpload.css";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProfile } from "../../../../../../redux/actions";
 
 function ImageUpload({ onClose }) {
   const [image, setImage] = useState(null);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.profile);
 
   const handleImageUpload = (event) => {
     event.preventDefault();
@@ -15,18 +19,16 @@ function ImageUpload({ onClose }) {
     formData.append("profile", file);
 
     fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/65ae8689bd5d12001890d317/picture",
+      `https://striveschool-api.herokuapp.com/api/profile/${user._id}/picture`,
       {
         method: "POST",
         headers: {
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
+            `Bearer ${localStorage.getItem('token')}`,
         },
         body: formData,
       }
-    ).then(() => {
-      window.location.reload();
-    });
+    ).then(() => dispatch(fetchProfile()))
   };
 
   return (
