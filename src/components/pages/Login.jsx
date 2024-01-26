@@ -4,6 +4,7 @@ import { loginAction } from "../../redux/actions"
 import { useNavigate } from "react-router-dom"
 import { Row, Col, Form, Button } from "react-bootstrap"
 import { fetchProfile } from "../../redux/actions"
+import linkedinLogo from "../MiniFooter/linkedin_logo_footer.png"
 
 function LoginPage() {
   const dispatch = useDispatch()
@@ -53,7 +54,7 @@ function LoginPage() {
         <Col md={4}>
           <nav className="navbar navbar-light bg-light">
             <a className="navbar-brand">
-              <img src="./linkedin_logo.png" alt="LinkedIn Logo" />
+              <img src={linkedinLogo} alt="LinkedIn Logo" />
             </a>
           </nav>
 
