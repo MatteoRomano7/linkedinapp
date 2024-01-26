@@ -1,7 +1,9 @@
 const initialState = {
   profile: {},
   jobs: {},
-  posts: [],
+  posts: [],   
+  token: localStorage.getItem('token') || null, 
+  user:  localStorage.getItem('userId') || null, 
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -14,7 +16,14 @@ const mainReducer = (state = initialState, action) => {
       return { ...state, posts: [...state.posts, action.payload] };
     case "FETCH_POSTS":
       return { ...state, posts: action.payload };
-
+    case "LOGIN":
+      localStorage.setItem('userId', action.payload.userId);
+      localStorage.setItem('token', action.payload.token);      
+      return {
+        ...state,
+        user: action.payload.userId,
+        token: action.payload.token,
+      };
     default:
       return state;
   }

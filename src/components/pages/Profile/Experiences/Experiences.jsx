@@ -4,6 +4,7 @@ import styles from "./Experiences.module.css"
 import AddExperienceModal from "./AddExperiencesModal"
 import EditExperienceModal from "./EditExperienceModal"
 import * as Icon from "react-bootstrap-icons"
+import { useSelector } from "react-redux";
 import {
   Dropdown,
   DropdownItem,
@@ -28,18 +29,17 @@ const Experiences = ({}) => {
   const [editExperienceId, setEditExperienceId] = useState("")
   const [editModalShow, setEditModalShow] = useState(false)
   const [selectedExperience, setSelectedExperience] = useState(null)
+  const userToken = useSelector((state) => state.token);
+  const userId = useSelector((state) => state.user);
 
   const handleEditModalClose = () => {
     setEditModalShow(false)
   }
 
-  const userId = "65ae435b600be100183a86a0"
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlNDM1YjYwMGJlMTAwMTgzYTg2YTAiLCJpYXQiOjE3MDU5MTkzMjQsImV4cCI6MTcwNzEyODkyNH0.ChId8_RqSdZkU4BzmkPO02cbeBsGdJn1mPzOwBHev0E"
 
   const apiUrl = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`
   const headers = new Headers({
-    Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${userToken}`,
     "Content-Type": "application/json",
   })
 
@@ -48,7 +48,7 @@ const Experiences = ({}) => {
     headers: headers,
   }
 
-  useEffect(() => {
+ 
     const fetchData = async () => {
       try {
         const response = await fetch(apiUrl, options)
@@ -58,9 +58,9 @@ const Experiences = ({}) => {
         console.error("Error fetching data:", error)
       }
     }
-
+    useEffect(() => {
     fetchData()
-  }, [])
+  }, [userToken, userId])
 
   const handleAddPosition = () => {
     setShowModal(true)

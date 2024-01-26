@@ -1,13 +1,14 @@
 export const setProfile = "SET_PROFILE";
 export const setJobs = "SET_JOBS";
+export const Login = 'LOGIN';;
 
 export const fetchProfile = () => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const { token } = getState(); 
     fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
       method: "GET",
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlODY4OWJkNWQxMjAwMTg5MGQzMTciLCJpYXQiOjE3MDU5MzY1MjIsImV4cCI6MTcwNzE0NjEyMn0.fmE6SUvSTdESNcTaxOhKxVPs2YKwDAdE7bIXyveOMkk",
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     })
@@ -28,3 +29,11 @@ export const fetchJobs = (query, category) => {
   };
 };
 
+
+
+export const loginAction = (userData) => {
+  return {
+    type: Login,
+    payload: userData,
+  };
+};
