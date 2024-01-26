@@ -10,3 +10,11 @@
     height: 60px;
 }
 
+.job-link {
+    text-decoration: none;
+    color: black
+}
+
+.job-link:hover {
+    color: #0D6EFD
+}

@@ -1,6 +1,6 @@
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { Container, Dropdown } from "react-bootstrap"
+import { Dropdown } from "react-bootstrap"
 import "./MiniFooter.css"
 import imgLinkedin from "../MiniFooter/linkedin_logo_footer.png"
 

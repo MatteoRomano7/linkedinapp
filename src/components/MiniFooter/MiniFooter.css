@@ -16,7 +16,7 @@
   text-decoration: none;
 }
 
-a:hover {
+.mini-footer a:hover {
   color: black;
   cursor: pointer;
 }
