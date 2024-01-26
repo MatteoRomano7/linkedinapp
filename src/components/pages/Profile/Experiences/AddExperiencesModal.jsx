@@ -1,12 +1,12 @@
-import React from "react"
-import { useState } from "react"
-import Modal from "react-bootstrap/Modal"
-import { Button } from "react-bootstrap"
-import { Form } from "react-bootstrap"
-import Card from "react-bootstrap/Card"
+import React from "react";
+import { useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import { Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
 
 const AddExperienceModal = ({ profile }) => {
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
   const [experience, setExperience] = useState({
     role: "",
     company: "",
@@ -14,50 +14,48 @@ const AddExperienceModal = ({ profile }) => {
     endDate: "",
     description: "",
     area: "",
-  })
+  });
 
-  const [showAlert, setShowAlert] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-  const [isError, setIsError] = useState(false)
-  const formDataExperienceImg = new FormData()
+  const [showAlert, setShowAlert] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const formDataExperienceImg = new FormData();
 
   const handleClose = () => {
-    setShow(false)
-    setShowAlert(false)
-  }
+    setShow(false);
+    setShowAlert(false);
+  };
 
-  const handleShow = () => setShow(true)
-  const showExperience = () => setModalExperience(true)
-  const closeExperience = () => setModalExperience(false)
+  const handleShow = () => setShow(true);
+  const showExperience = () => setModalExperience(true);
+  const closeExperience = () => setModalExperience(false);
 
-  const [modalExperience, setModalExperience] = useState(false)
+  const [modalExperience, setModalExperience] = useState(false);
 
   const handleInputChange = (property, value) => {
     setExperience({
       ...experience,
       [property]: value,
-    })
-  }
-
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFlNDM1YjYwMGJlMTAwMTgzYTg2YTAiLCJpYXQiOjE3MDU5MTkzMjQsImV4cCI6MTcwNzEyODkyNH0.ChId8_RqSdZkU4BzmkPO02cbeBsGdJn1mPzOwBHev0E"
-  const userId = "65ae435b600be100183a86a0"
+    });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
       const res = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${localStorage.getItem('userId')}/experiences`,
+        `https://striveschool-api.herokuapp.com/api/profile/${localStorage.getItem(
+          "userId"
+        )}/experiences`,
         {
           method: "POST",
           body: JSON.stringify(experience),
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
             "Content-Type": "application/json",
           },
         }
-      )
+      );
       if (res.ok) {
         setExperience({
           role: "",
@@ -66,28 +64,29 @@ const AddExperienceModal = ({ profile }) => {
           endDate: "",
           description: "",
           area: "",
-        })
-        setShowAlert(true)
+        });
+        setShowAlert(true);
+        window.location.reload()
       } else {
-        throw new Error("Errore nel salvataggio dell'esperienza")
+        throw new Error("Errore nel salvataggio dell'esperienza");
       }
     } catch (error) {
-      console.log("Errore:", error)
+      console.log("Errore:", error);
     }
-  }
+  };
 
   return (
     <>
       <Card className="mb-3">
         <Card.Body>
-          <div className="d-flex justify-content-between">
+          <div
+            className="d-flex justify-content-between"
+            onClick={showExperience}
+            type="button"
+          >
             <Card.Title>Esperienza</Card.Title>
             <div>
-              <i
-                type="button"
-                className="bi bi-plus-lg px-3"
-                onClick={showExperience}
-              >
+              <i  className="bi bi-plus-lg px-3">
                 aggiungi
               </i>
             </div>
@@ -169,9 +168,9 @@ const AddExperienceModal = ({ profile }) => {
                 variant="primary"
                 type="submit"
                 onClick={(e) => {
-                  e.preventDefault()
-                  handleSubmit(e)
-                  closeExperience()
+                  e.preventDefault();
+                  handleSubmit(e);
+                  closeExperience();
                 }}
               >
                 Aggiungi esperienza
@@ -181,7 +180,7 @@ const AddExperienceModal = ({ profile }) => {
         </Card.Body>
       </Card>
     </>
-  )
-}
+  );
+};
 
-export default AddExperienceModal
+export default AddExperienceModal;

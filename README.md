@@ -2,8 +2,8 @@
 
 # Getting Started
 
-First of all, login on the app using the provided default profile, or alternatively, if you're registered on the [strive-school API](https://strive.school/linkedin-registration), you can use the bearer token to use our services.
 This application needs to be ran in Visual Studio Code by writing "npm start" in the terminal after cloning the repository. This will automatically assign a port and run the application in localhost.
+First of all, login on the app using the provided default profile, or alternatively, if you're registered on the [strive-school API](https://strive.school/linkedin-registration), you can use the bearer token and userID (given by the API response) to use our services.
 
 # Technology
 

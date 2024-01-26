@@ -29,7 +29,7 @@ import {
 function MyNavbar() {
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <Navbar bg="white" expand="lg" className="sticky-top">
@@ -43,7 +43,7 @@ function MyNavbar() {
             onSubmit={(e) => {
               e.preventDefault();
               dispatch(fetchJobs(searchQuery, "search"));
-              navigate(`/jobs/${searchQuery}`, { replace: true })
+              navigate(`/jobs/${searchQuery}`, { replace: true });
             }}
           >
             <FormControl
@@ -105,9 +105,9 @@ function MyNavbar() {
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                         <Dropdown title="Tu">
-                          <Dropdown.Item>
+                          <div>
                             <ModalNav />
-                          </Dropdown.Item>
+                          </div>
                         </Dropdown>
                       </Dropdown.Menu>
                     </Dropdown>

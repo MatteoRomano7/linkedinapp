@@ -15,6 +15,7 @@ import Experiences from "./Experiences/Experiences";
 import Header from "./Header/Header";
 import Language from "./Language/Langugage";
 import data from "../../../data/profiles.json"
+import People from "./People/People"
 
 function Profile() {
   const dispatch = useDispatch();
@@ -33,7 +34,6 @@ function Profile() {
 
         if (response.ok) {
           const data = await response.json();
-          setUsers(data);
         } else {
           console.error("Error in Data Retrieval:", response.status);
         }
@@ -44,6 +44,10 @@ function Profile() {
 
     fetchData();
   }, [userToken]);
+
+  useEffect(() => {
+    setUsers(data)
+  }, [])
   return (
     <Container className="content-wrapper">
       <div className="profile-main">
@@ -53,12 +57,11 @@ function Profile() {
         <Activity />
         <Training />
         <Interests />
-        {/* <Hiring /> */}
         <Experiences />
       </div>
       <div className="profile-sidebar">
         <Language />
-        {/* <People users={users} /> */}
+        <People users={users} />
       </div>
     </Container>
   );

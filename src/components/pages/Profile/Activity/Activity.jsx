@@ -10,9 +10,9 @@ const Activity = () => {
           <div>
             <h3>Attivitá</h3>
           </div>
-          <div>
+          <div className="d-flex align-items-center gap-2">
             <button className="outlined-button">Crea un post</button>
-            <Pencil />
+            <Pencil type="button"/>
           </div>
         </div>
         <small className="text-primary">0 follower</small>

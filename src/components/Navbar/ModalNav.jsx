@@ -1,6 +1,7 @@
 import { Modal, Button, Col, Row, Container, Card } from "react-bootstrap";
 import {  useSelector } from "react-redux";
 import { Link  } from "react-router-dom";
+import "./ModalNav.css"
 
 const ModalNav = () => {
   const profileStore = useSelector(state => state.profile);
@@ -8,7 +9,7 @@ const ModalNav = () => {
   return (
     <>
       <Modal.Dialog>
-        <Row>
+        <Row className="p-3">
           <Container className="d-flex justify-content-around">
             <Col>
               <Modal.Header>
@@ -65,7 +66,7 @@ const ModalNav = () => {
                 Account per la pubblicizzazione
               </Link>
               <br />
-              <Link to="#" className="LinkModale">
+              <Link to="/Login" className="LinkModale">
                 Esci
               </Link>
             </Col>

@@ -9,7 +9,6 @@ function CommentArea({ commentData, setCommentData, post, id }) {
   const [comments, setComments] = useState([]);
   const [commentShow, setCommentShow] = useState(false);
 
-
   useEffect(() => {
     fetch(
       `https://striveschool-api.herokuapp.com/api/books/${post._id}/comments`
@@ -22,9 +21,13 @@ function CommentArea({ commentData, setCommentData, post, id }) {
     <div>
       <Card className="mb-3">
         <Card.Body className="text-center">
-            <button type="button" onClick={() => setCommentShow(!commentShow)} className="btn btn-outline-success">
-              Aggiungi un commento
-            </button>
+          <button
+            type="button"
+            onClick={() => setCommentShow(!commentShow)}
+            className="btn btn-outline-success"
+          >
+            Aggiungi un commento
+          </button>
         </Card.Body>
       </Card>
       <div>
@@ -39,19 +42,18 @@ function CommentArea({ commentData, setCommentData, post, id }) {
       </div>
 
       {comments.map((elem) => (
-        <>
-          <Card key={elem._id}>
-            <Card.Body>
-              <Card.Text>
-                {
-                  <>
-                    <span className="fw-bold">{elem.author}</span>  {": "+ elem.comment}
-                  </>
-                }
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </>
+        <Card key={elem._id}>
+          <Card.Body>
+            <Card.Text>
+              {
+                <>
+                  <span className="fw-bold">{elem.author}</span>{" "}
+                  {": " + elem.comment}
+                </>
+              }
+            </Card.Text>
+          </Card.Body>
+        </Card>
       ))}
     </div>
   );

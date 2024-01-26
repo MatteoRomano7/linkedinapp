@@ -16,14 +16,14 @@ const Analytics = () => {
         <div className="profile-highlight">
           <PeopleFill size={24} />
           <div>
-            <p>{Math.round(Math.random() * 1000)} profile views</p>
+            <p>{Math.round(Math.random() * 1000000)} profile views</p>
             <p>Discover who's viewed your profile.</p>
           </div>
         </div>
         <div className="profile-highlight">
           <Search size={24}/>
           <div>
-            <h4>11 search appearances</h4>
+            <p className="h5">{Math.round(Math.random() * 1000000)} search appearances</p>
             <p>See how often you appear in search results</p>
           </div>
         </div>

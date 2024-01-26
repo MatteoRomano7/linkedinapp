@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux"
 import { loginAction } from "../../redux/actions"
 import { useNavigate } from "react-router-dom"
 import { Row, Col, Form, Button } from "react-bootstrap"
-import linkedinLogo from "../MiniFooter/linkedin_logo_footer.png"
+import { fetchProfile } from "../../redux/actions"
 
 function LoginPage() {
   const dispatch = useDispatch()
@@ -14,6 +14,7 @@ function LoginPage() {
 
   const handleLogin = () => {
     dispatch(loginAction({ token, userId }))
+    dispatch(fetchProfile())
     localStorage.setItem("token", token)
     localStorage.setItem("userId", userId)
     navigate("/")
@@ -23,7 +24,11 @@ function LoginPage() {
     const testToken =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWIyOWJmYjMxYTczZjAwMTlkNWM0NTUiLCJpYXQiOjE3MDYyMDQxNTUsImV4cCI6MTcwNzQxMzc1NX0.9uyOU7pnSY-_IF4wvYbKIK5WDnYXoZTKox832J6ujwA"
     const testUserId = "65b29bfb31a73f0019d5c455"
+    localStorage.setItem("token", testToken)
+    localStorage.setItem("userId", testUserId)
     dispatch(loginAction({ token: testToken, userId: testUserId }))
+    dispatch(fetchProfile())
+
     navigate("/")
   }
 
@@ -47,8 +52,8 @@ function LoginPage() {
       <Row className="justify-content-center align-items-center h-100">
         <Col md={4}>
           <nav className="navbar navbar-light bg-light">
-            <a className="navbar-brand " href="/">
-              <img src={linkedinLogo} alt="LinkedIn Logo" />
+            <a className="navbar-brand">
+              <img src="./linkedin_logo.png" alt="LinkedIn Logo" />
             </a>
           </nav>
 
@@ -73,25 +78,26 @@ function LoginPage() {
                   required
                 />
               </Form.Group>
+              <hr />
 
-              <Button
-                variant="primary"
-                onClick={handleLogin}
-                disabled={isLoginDisabled}
-              >
-                Login
-              </Button>
-
-              <p>
-                Se vuoi procedere al login con un profilo di prova,{" "}
+              <div className="text-center">
+                <Button
+                  variant="primary"
+                  onClick={handleLogin}
+                  disabled={isLoginDisabled}
+                  style={{ width: "160px", marginBottom: "1rem" }}
+                >
+                  Login
+                </Button>
+              </div>
+              <p className="text-center">
                 <a
                   onClick={handleTestLogin}
-                  className="test-login-link"
+                  className="test-login-link "
                   style={{ cursor: "pointer" }}
                 >
-                  clicca qui
+                  Entra come ospite
                 </a>
-                .
               </p>
             </Form>
           </div>
