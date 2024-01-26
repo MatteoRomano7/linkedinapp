@@ -6,7 +6,8 @@
 }
 
 .signatureLogo img {
-  width: 100px;
+  width: 75px;
+  margin-right: 10px;
 }
 
 a {
@@ -23,3 +24,4 @@ a:hover {
   font-weight: 500 !important;
   color: darkgrey;
 }
+
