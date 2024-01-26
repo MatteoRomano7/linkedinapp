@@ -12,9 +12,8 @@ const mainReducer = (state = initialState, action) => {
       return { ...state, jobs: action.payload };
     case "SET_POSTS":
       return { ...state, posts: [...state.posts, action.payload] };
-      case "FETCH_POSTS":
-        return { ...state, posts: action.payload };
-  
+    case "FETCH_POSTS":
+      return { ...state, posts: action.payload };
 
     default:
       return state;

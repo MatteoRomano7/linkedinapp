@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { Button, Form, Modal, Container, Row } from "react-bootstrap";
-import { setCommentArray } from "../../../redux/actions";
-import { setComments } from "../../../redux/actions";
 
 function Comments({ comments, open, onHide, id, setComments }) {
   const [commentText, setCommentText] = useState("");
@@ -30,11 +27,11 @@ function Comments({ comments, open, onHide, id, setComments }) {
       );
 
       if (response.ok) {
-        const data = await response.json()
-    
-        Object.assign(newComment, {...newComment, key:data._id})
+        const data = await response.json();
+
+        Object.assign(newComment, { ...newComment, key: data._id, author: data.author });
         setComments([...comments, newComment]);
-        console.log(newComment)
+        onHide()
       } else {
         console.log("Error");
       }
@@ -55,35 +52,29 @@ function Comments({ comments, open, onHide, id, setComments }) {
             {/* Box per inserire il testo del nuovo commento */}
             <Form onSubmit={postComment}>
               <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Scrivi il tuo commento:</Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={5}
-                  style={{
-                    border: "transparent",
-                    width: "46vh",
-                    marginBottom: "5px",
-                  }}
                   onChange={(e) => setCommentText(e.target.value)}
                 />
               </Form.Group>
-              <div className="d-flex">
-                {/* Pulsante per pubblicare il commento */}
-                <Button variant="outline-success" type="submit">
+              <hr />
+              {/* Pulsante per pubblicare il commento */}
+              <div className="text-center">
+                <Button
+                  variant="outline-success"
+                  type="submit"
+                  style={{ width: "160px" }}
+                >
                   Pubblica
                 </Button>
-              </div>
+              </div>{" "}
             </Form>
           </Row>
         </Container>
       </Modal.Body>
       {/* Pulsante chiudi */}
-      <Button
-        variant="outline-danger"
-        className="mx-5 mb-2"
-        onClick={() => onHide(false)}
-      >
-        Chiudi
-      </Button>
     </Modal>
   );
 }
