@@ -1,7 +1,7 @@
 const initialState = {
   profile: {},
   jobs: {},
-  posts: [],,   
+  posts: [],   
   token: localStorage.getItem('token') || null, 
   user:  localStorage.getItem('userId') || null, 
 };
