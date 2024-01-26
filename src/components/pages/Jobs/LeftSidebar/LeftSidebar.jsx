@@ -1,8 +1,8 @@
-import "./JobsSidebar.css"
+import "./LeftSidebar.css"
 
-function JobsSidebar( { query }) {
+function LeftSidebar( { query }) {
   return (
-    <div className="jobs-sidebar">
+    <div className="jobs-sidebar left-sidebar">
       <figure className="border rounded bg-white">
         <figcaption>Su questa pagina</figcaption>
         <ul>
@@ -33,4 +33,4 @@ function JobsSidebar( { query }) {
   );
 }
 
-export default JobsSidebar;
+export default LeftSidebar;

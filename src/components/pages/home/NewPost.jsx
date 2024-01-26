@@ -68,7 +68,7 @@ const NewPost = () => {
           );
         }
 
-        dispatch({ type: "SET_POSTS", payload: newPostJson });
+        // dispatch({ type: "SET_POSTS", payload: newPostJson });
         setNewPost({ text: "" });
         setImageFile(null);
         handleClose();

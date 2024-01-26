@@ -24,7 +24,7 @@ function Home() {
         <ProfileDetails />
         <LinkGroup />
       </div>
-      <main>
+      <main style={{width: "100%"}}>
         <NewPost />
         <Post />
       </main>

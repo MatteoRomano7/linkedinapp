@@ -11,7 +11,7 @@ const ProfileDetails = () => {
   const profilo = useSelector((state) => state.profile);
 
   return (
-    <div>
+    <div className="home-sidebar">
       <Card>
         <Link to="/profile/me" className="propic-container">
           <Card.Img

@@ -3,20 +3,22 @@ import { useParams } from "react-router-dom"
 import "./Jobs.css"
 import SingleJob from "./SingleJob/SingleJob"
 import Container from "react-bootstrap/Container"
-import JobsSidebar from "./JobsSidebar/JobsSidebar"
-import OtherJobs from "./OtherJobs/OtherJobs"
-import JobSearch from "./JobsSidebar/JobSearch/JobSearch"
+import LeftSidebar from "./LeftSidebar/LeftSidebar"
+import RightSidebar from "./RightSidebar/RightSidebar"
+import JobSearch from "./JobSearch/JobSearch"
+import Card from "react-bootstrap/Card"
 import { Alert } from "react-bootstrap"
 
 function Jobs() {
   const jobs = useSelector((state) => state.jobs)
   const params = useParams()
-  console.log(jobs)
   return (
     <Container as={"main"} className="jobs-wrapper">
-      <JobsSidebar query={params.searchQuery} />
+      <LeftSidebar query={params.searchQuery} />
       {params?.searchQuery ? (
-        <div>
+        <div style={{flexGrow: "2"}}>
+          <Card className="p-3" >
+            <h1>Lavori che includono "{params.searchQuery}"</h1>
           {jobs.length > 0 ? (
             jobs.map((elem) => {
               return <SingleJob key={elem._id} data={elem} />
@@ -26,11 +28,12 @@ function Jobs() {
               Non è stato trovato nulla con questa chiave di ricerca.
             </Alert>
           )}
+          </Card>
         </div>
       ) : (
         <JobSearch />
       )}
-      <OtherJobs />
+      <RightSidebar />
     </Container>
   )
 }
