@@ -42,13 +42,17 @@ const ProfileDetails = () => {
             <div>
               <p>Accedi a strumenti e informazioni in esclusiva</p>
               <div className="d-flex align-items-center">
-                <App className="use"/>
+                <svg aria-hidden="true" class="premiumIcon text-upsell__premium-chip-icon feed-identity-module__premium-icon mr1 flex-shrink-zero" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" data-supported-dps="24x24" data-test-icon="premium-chip-medium">
+
+
+                  <use href="#premium-chip-medium" width="24" height="24"></use>
+                </svg>
                 <p className="fw-bold mb-0 ms-2 py-2">Prova Premium per 0 EUR</p>
               </div>
               <hr />
               <div className="d-flex align-items-center">
                 <BookmarkFill />
-                <p  className="mb-0 ms-2 py-2">I miei elementi</p>
+                <p className="mb-0 ms-2 py-2">I miei elementi</p>
               </div>
             </div>
           </div>

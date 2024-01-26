@@ -4,14 +4,17 @@
     object-fit: cover;
 }
 
-/* .use {
-    color: orange;
-    background-color: orange;
+.premiumIcon {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(61deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(231, 163, 62, 1) 0%, rgba(248, 199, 126, 1) 100%);
     fill-opacity: 1;
     stroke-opacity: 1;
     fill: transparent;
     stroke: transparent;
-} */
+    border: 1px solid orange;
+    height: 14px;
+    width: auto;
+}
 
 
 .home-sidebar {
