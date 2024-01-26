@@ -15,4 +15,9 @@
     width: 60px;
     height: 60px;
     top: 10px;
-  }
+}
+
+.LinkModale {
+    text-decoration: none;
+    color: black;
+}
