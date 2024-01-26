@@ -6,13 +6,19 @@ import MyFooter from "./components/MyFooter/MyFooter.jsx";
 import Home from "./components/pages/home/Home.jsx";
 import Profile from "./components/pages/Profile/Profile.jsx";
 import Jobs from "./components/pages/Jobs/Jobs.jsx";
+import LoginPage from "./components/pages/Login.jsx";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="global-wrapper">
         <Routes>
-          {/* <Route path="/login" Component={() => } /> */}
+          <Route 
+            path="/Login" 
+            Component={() => 
+                <LoginPage /> 
+            }
+         />
           <Route
             path="/"
             Component={() => (
