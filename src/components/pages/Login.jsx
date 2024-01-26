@@ -74,6 +74,7 @@ function LoginPage() {
               </Form.Group>
 
               <Button
+                className="mt-2"
                 variant="primary"
                 onClick={handleLogin}
                 disabled={isLoginDisabled}
