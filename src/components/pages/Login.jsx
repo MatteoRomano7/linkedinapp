@@ -14,14 +14,15 @@ function LoginPage() {
 
   const handleLogin = () => {
     dispatch(loginAction({ token, userId }));
+    localStorage.setItem('token', token); 
+    localStorage.setItem('userId', userId); 
     navigate("/home");
   };
 
   const handleTestLogin = () => {
-    console.log("Handle test login clicked");
     const testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWIyOWJmYjMxYTczZjAwMTlkNWM0NTUiLCJpYXQiOjE3MDYyMDQxNTUsImV4cCI6MTcwNzQxMzc1NX0.9uyOU7pnSY-_IF4wvYbKIK5WDnYXoZTKox832J6ujwA";
     const testUserId = "65b29bfb31a73f0019d5c455";
-    dispatch(loginAction({ testToken, testUserId }));
+    dispatch(loginAction({ token: testToken, userId: testUserId }));
     navigate("/home");
   };
 

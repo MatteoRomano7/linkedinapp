@@ -49,7 +49,7 @@ const Experiences = ({}) => {
     headers: headers,
   }
 
-  useEffect(() => {
+ 
     const fetchData = async () => {
       try {
         const response = await fetch(apiUrl, options)
@@ -59,9 +59,9 @@ const Experiences = ({}) => {
         console.error("Error fetching data:", error)
       }
     }
-
+    useEffect(() => {
     fetchData()
-  }, [])
+  }, [userToken, userId])
 
   const handleAddPosition = () => {
     setShowModal(true)

@@ -48,12 +48,12 @@ const AddExperienceModal = ({ profile }) => {
 
     try {
       const res = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`,
+        `https://striveschool-api.herokuapp.com/api/profile/${localStorage.getItem('userId')}/experiences`,
         {
           method: "POST",
           body: JSON.stringify(experience),
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
             "Content-Type": "application/json",
           },
         }
